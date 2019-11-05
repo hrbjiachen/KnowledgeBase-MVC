@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="leftDiv">
+        <div class="title">Knowledge<span class="blue">Base</span></div>
+        <div id="signupMoreInfoTitleDiv">Let us know a little more about you</div>
+    </div>
+
+    <div class="rightDiv">
+        <form method="post" action="/register">
+            <div id="signupFormMoreInfo">
+                <input type="hidden" name="fname" value="{{signupInfo.fname}}">
+                <input type="hidden" name="lname" value="{{signupInfo.lname}}">
+                <input type="hidden" name="email" value="{{signupInfo.email}}">
+                <input type="hidden" name="password" value="{{signupInfo.password}}">
+                <div><input type="text" name="imgurl" placeholder="Image URL"
+                        value="https://randomuser.me/api/portraits/men/1.jpghttps://randomuser.me/api/portraits/men/1.jpg"
+                        required />
+                </div>
+                <div><textarea rows="4" name="description" placeholder="A few lines about yourself..."
+                        required></textarea></div>
+                <div><input type="text" name="country" placeholder="Country" required /></div>
+                <div><input type="date" name="bday" placeholder="Birthday: " required /></div>
+                <div><input class="button" type="submit" value="Submit" /></div>
+            </div>
+        </form>
+    </div>
+</div>

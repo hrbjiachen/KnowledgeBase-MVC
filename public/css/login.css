@@ -1,0 +1,44 @@
+input[type="text"],
+#loginDiv input[type="password"] {
+  width: 200px;
+}
+
+#imageDiv {
+  margin: 10% 0 0 20%;
+}
+
+#imageDiv img {
+  width: 80%;
+}
+
+#loginDiv {
+  margin-top: 17%;
+}
+
+input[type="email"],
+input[type="password"],
+#signupFormMoreInfo input,
+textarea {
+  width: 412px;
+}
+
+.subtitleDiv {
+  margin: 5% 0 2%;
+  font-size: 36px;
+  text-align: left;
+  width: 500px;
+}
+
+input[type="date"]:before {
+  content: attr(placeholder) !important;
+}
+
+#signupMoreInfoTitleDiv {
+  margin: 15% 30% 0 30%;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+#signupFormMoreInfo {
+  margin-top: 35%;
+}
