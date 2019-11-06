@@ -6,16 +6,21 @@
 
     <div class="rightDiv">
         <div id="loginDiv">
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <button class="button">Login</button>
+            <form id="loginForm" method="post" action="/login">
+                <input type="email" name="email" placeholder="Username" />
+                <input type="password" name="password" placeholder="Password" />
+                <input type="submit" class="button" value="Login" />
+            </form>
+            {{#if loginError}}
+            <div class="red">Invalid username or password!</div>
+            {{/if}}
         </div>
 
         <div class="subtitleDiv">
             <div>Join the worlds largest community for knowledge sharing</div>
         </div>
 
-        <form method="post" action="/signup">
+        <form id="signupForm" method="post" action="/signup">
             <div>
                 <input type="text" id="fname" name="fname" placeholder="First name" required />
                 <input type="text" id="lname" name="lname" placeholder="Last name" required />
@@ -30,6 +35,9 @@
                 <input id="confirm_password" name="confirm_password" type="Password" placeholder="Confirm password"
                     required />
             </div>
+            {{#if signupError}}
+            <div class="red">Email Address is Already Registered!</div>
+            {{/if}}
             <input class="button" type="submit" value="Sign up" />
         </form>
     </div>

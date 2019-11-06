@@ -1,5 +1,6 @@
 input[type="text"],
-#loginDiv input[type="password"] {
+#loginDiv input[type="password"],
+#loginForm input[type="email"] {
   width: 200px;
 }
 
@@ -15,7 +16,7 @@ input[type="text"],
   margin-top: 17%;
 }
 
-input[type="email"],
+#signupForm input[type="email"],
 input[type="password"],
 #signupFormMoreInfo input,
 textarea {
