@@ -1,0 +1,33 @@
+
+#searchDiv {
+  margin-left: 5%;
+}
+
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.search-input {
+  padding: 10px;
+  outline: none;
+  margin-bottom: 15px
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+
+div.logo {        
+  padding: 10px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.header-item{
+    display: inline
+}

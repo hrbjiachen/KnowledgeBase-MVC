@@ -15,7 +15,7 @@ const showLoginPage = (req, res) => {
 
 const showHomePage = (req, res) => {
   const userInfo = req.session.user;
-  res.render("home", { userInfo });
+  res.render("home", { userInfo, homeCSS: true });
 };
 
 const continueSignup = async (req, res) => {
@@ -35,7 +35,7 @@ const register = async (req, res) => {
     const userInfo = { ...req.body, user_id: rows.insertId };
     delete userInfo["password"];
     req.session.user = userInfo;
-    res.render("home", { userInfo });
+    showHomePage(req, res);
   } catch (error) {
     res.render("error", { error });
   }
@@ -48,7 +48,8 @@ const login = async (req, res) => {
       const userInfo = { ...rows[0] };
       delete userInfo["password"];
       req.session.user = userInfo;
-      res.render("home", { userInfo });
+
+      showHomePage(req, res);
     } else {
       res.render("login", { loginCSS: true, loginError: true });
     }

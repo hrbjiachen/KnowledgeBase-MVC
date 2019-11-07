@@ -27,5 +27,32 @@ routes.post("/logout", accountController.logout);
 //user route
 routes.use("/user", userRoute);
 userRoute.get("/all", userController.getAllUser);
-
 module.exports = routes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\
