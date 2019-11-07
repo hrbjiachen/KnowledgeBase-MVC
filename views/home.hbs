@@ -1,13 +1,53 @@
 <div class="header">
-    <div class="header-item logo">k<span class="blue">b</span></div>
-    <div class="header-item">
-        <i class="fa fa-search icon"></i>
-        <input class="search-input" type="text" placeholder="search here...">
+    <div class="logo">k<span class="blue">b</span></div>
+    <div class="inline">
+        <input type="text" placeholder="Search.." name="search_keyword">
+        <button type="submit"><i class="fa fa-search"></i></button>
     </div>
-    <div class="header-item">Hello {{userInfo.fname}} {{userInfo.lname}}</div>
-    <button class="button header-item" onclick="logout()">Logout</button>
+    <button class="inline" onclick="logout()">Logout</button>
+    <div class="inline greetings">Hello {{userInfo.fname}} {{userInfo.lname}}</div>
 </div>
 
 
+<div class="container">
+    <div class="left_div textcenter">
+        <img class="circle" src="{{userInfo.imgurl}}" alt="avatar" />
+        <h2>{{userInfo.fname}} {{userInfo.lname}}</h2>
+        <p class="grey">{{userInfo.description}}</p>
 
+        <table class="link">
+            <tr>
+                <td width="100px"><a href="/">Posts</a></td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td width="100px"><a href="/">Messages</a></td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td width="100px"><a href="/">Likes</a></td>
+                <td>10</td>
+            </tr>
+        </table>
+
+        <div class="edit_profile_div">Edit Profile</div>
+    </div>
+    <div class="right_div">
+        <div class="grey largeText">Whats your question today?</div>
+        <form id="postForm" action="/">
+            <input type="text" name="subject" placeholder="Subject" />
+            <textarea type="text" rows="4" name="detail" placeholder="Explain in detail..."></textarea>
+            <select name="topic">
+                <option value="">Topic</option>
+                <option value="php">php</option>
+                <option value="nodejs">nodejs</option>
+                <option value="java">java</option>
+                <option value="sql">sql</option>
+                <option value="zend">zend</option>
+            </select>
+
+            <input type="submit" value="Post to Timeline" />
+        </form>
+    </div>
+</div>
 <script src="/js/home.js" defer></script>

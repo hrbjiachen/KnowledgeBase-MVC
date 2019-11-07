@@ -1,33 +1,105 @@
-
-#searchDiv {
-  margin-left: 5%;
-}
-
-.icon {
-  padding: 10px;
-  background: dodgerblue;
-  color: white;
-  min-width: 50px;
-  text-align: center;
-}
-
-.search-input {
-  padding: 10px;
-  outline: none;
-  margin-bottom: 15px
-}
-
-.input-field:focus {
-  border: 2px solid dodgerblue;
-}
-
-
-div.logo {        
-  padding: 10px;
+div.logo {
+  padding: 50px;
   font-size: 50px;
   font-weight: bold;
+  display: inline;
 }
 
-.header-item{
-    display: inline
+button.inline {
+  margin: 20px 50px;
+  width: 150px;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  float: right;
+}
+
+.greetings {
+  float: right;
+  margin: 30px 50px;
+}
+
+.inline input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  max-width: 300px;
+  background: #f1f1f1;
+  margin: 0;
+}
+
+.inline button {
+  width: 60px;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+.inline button:hover,
+button.inline:hover {
+  background: #0b7dda;
+}
+
+.edit_profile_div {
+  margin-top: 50px;
+  text-decoration: underline;
+}
+
+table.link {
+  margin: 10% 0 0 40%;
+  text-align: left;
+}
+
+.left_div {
+  float: left;
+  width: 20%;
+  overflow: hidden;
+  min-height: 75vh;
+  padding: 50px;
+  margin-right: 10px;
+  background: #fafafa;
+}
+
+.right_div {
+  width: auto;
+  overflow: hidden;
+  min-height: 75vh;
+  padding: 50px;
+  margin: 10px;
+  background: #fafafa;
+}
+
+#postForm input[type="text"],
+select,
+textarea {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 20px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  width: 50%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
 }

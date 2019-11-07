@@ -15,6 +15,12 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.header {
+  height: 90px;
+  background: #fafafa;
+  padding: 5px;
+}
+
 .button {
   background-color: #2196f3;
   border: 1px solid white;
@@ -34,18 +40,6 @@ body {
   background-color: white;
   color: black;
   border: 1px solid #2196f3;
-}
-
-.leftDiv {
-  float: left;
-  width: 35%;
-  overflow: hidden;
-  margin-right: 5%;
-}
-
-.rightDiv {
-  width: 45%;
-  overflow: hidden;
 }
 
 .blue {
@@ -69,4 +63,29 @@ input {
 
 .red {
   color: red;
+}
+
+.inline {
+  display: inline;
+}
+
+.grey {
+  color: #616161;
+}
+
+.border_right {
+  border-right: 0.5px solid #bdbdbd;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.textcenter {
+  text-align: center;
+}
+
+.largeText {
+  font-size: 40px;
+  font-weight: bold;
 }

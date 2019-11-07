@@ -43,3 +43,20 @@ input[type="date"]:before {
 #signupFormMoreInfo {
   margin-top: 35%;
 }
+
+.left_div {
+  float: left;
+  width: 37%;
+  overflow: hidden;
+  padding: 10px;
+  margin: 20px;
+  min-height: 70vh;
+}
+
+.right_div {
+  width: auto;
+  overflow: hidden;
+  min-height: 70vh;
+  padding: 20px;
+  margin: 5px;
+}

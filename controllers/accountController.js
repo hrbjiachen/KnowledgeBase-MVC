@@ -48,7 +48,6 @@ const login = async (req, res) => {
       const userInfo = { ...rows[0] };
       delete userInfo["password"];
       req.session.user = userInfo;
-
       showHomePage(req, res);
     } else {
       res.render("login", { loginCSS: true, loginError: true });
