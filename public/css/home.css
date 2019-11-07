@@ -27,7 +27,7 @@ button.inline {
   padding: 10px;
   font-size: 17px;
   border: 1px solid grey;
-  max-width: 300px;
+  width: 25%;
   background: #f1f1f1;
   margin: 0;
 }
@@ -77,7 +77,7 @@ table.link {
   background: #fafafa;
 }
 
-#postForm input[type="text"],
+.right_div input[type="text"],
 select,
 textarea {
   width: 50%;
@@ -89,9 +89,9 @@ textarea {
   box-sizing: border-box;
 }
 
-input[type="submit"] {
+button#submitPostBtn {
   width: 50%;
-  background-color: #4caf50;
+  background: #2196f3;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -100,6 +100,71 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
-  background-color: #45a049;
+button#submitPostBtn:hover {
+  background-color: #0b7dda;
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #0b7dda;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }

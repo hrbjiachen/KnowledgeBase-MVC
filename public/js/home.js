@@ -3,6 +3,30 @@ const logout = async () => {
   window.location = window.location.origin;
 };
 
+const submitPost = async () => {
+  const subject = document.getElementById("subject").value;
+  const detail = document.getElementById("detail").value;
+  const topic = document.getElementById("topic").value;
+
+  if (subject.trim() !== "" && detail.trim() !== "" && topic.trim() !== "") {
+    const result = await callServer("post/add", "POST", {
+      subject,
+      detail,
+      topic
+    });
+    showToastMessage("Post submitted!");
+    clearForm();
+  } else {
+    showToastMessage("Input cannot be empty!");
+  }
+};
+
+const clearForm = () => {
+  document.getElementById("subject").value = "";
+  document.getElementById("detail").value = "";
+  document.getElementById("topic").value = "";
+};
+
 const callServer = async (path, method, data) => {
   try {
     let url = `${window.location.origin}/${path}`;
@@ -23,3 +47,21 @@ const callServer = async (path, method, data) => {
     return e;
   }
 };
+
+const showToastMessage = msg => {
+  let toastMessage = document.getElementById("snackbar");
+  toastMessage.innerText = msg;
+
+  toastMessage.classList.add("show");
+  setTimeout(() => {
+    toastMessage.classList.remove("show");
+  }, 2000);
+};
+
+const shouldShowToast = () => {
+  if (document.querySelector("#postSubmitted")) {
+    showToastMessage("Post submitted");
+  }
+};
+
+shouldShowToast();

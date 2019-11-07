@@ -24,7 +24,7 @@ const getAll = async () => {
 };
 
 const getUserById = async id => {
-  return await db.execute("Select * from user where id = " + id);
+  return await db.execute("Select * from user where user_id = ?", [id]);
 };
 
 //get user by email and password
