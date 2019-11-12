@@ -1,4 +1,56 @@
-<h1>Hello {{userInfo.fname}} {{userInfo.lname}}</h1>
-<button class="button" onclick="logout()">Logout</button>
+<div class="header">
+    <div class="logo">k<span class="blue">b</span></div>
+    <div class="inline">
+        <input type="text" placeholder="Search.." name="search_keyword">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+    <button class="inline" onclick="logout()">Logout</button>
+    <div class="inline greetings">Hello {{userInfo.fname}} {{userInfo.lname}}</div>
+</div>
 
+
+<div class="container">
+    <div class="left_div textcenter">
+        <img class="circle" src="{{userInfo.imgurl}}" alt="avatar" />
+        <h2>{{userInfo.fname}} {{userInfo.lname}}</h2>
+        <p class="grey">{{userInfo.description}}</p>
+
+        <table class="link">
+            <tr>
+                <td width="100px"><a href="/">Posts</a></td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td width="100px"><a href="/">Messages</a></td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td width="100px"><a href="/">Likes</a></td>
+                <td>10</td>
+            </tr>
+        </table>
+
+        <div class="edit_profile_div">Edit Profile</div>
+    </div>
+    <div class="right_div">
+        <div class="grey largeText">Whats your question today?</div>
+
+        <input type="text" id="subject" placeholder="Subject" />
+        <textarea type="text" rows="4" id="detail" placeholder="Explain in detail..."></textarea>
+        <select id="topic">
+            <option value="">Topic</option>
+            <option value="php">php</option>
+            <option value="nodejs">nodejs</option>
+            <option value="java">java</option>
+            <option value="sql">sql</option>
+            <option value="zend">zend</option>
+        </select>
+
+        <button id="submitPostBtn" onclick="submitPost()">Post to Timeline</button>
+
+
+    </div>
+</div>
+
+<div id="snackbar"></div>
 <script src="/js/home.js" defer></script>
