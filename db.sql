@@ -34,3 +34,26 @@ CREATE TABLE IF NOT EXISTS `post` (
   CONSTRAINT `user_id_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+
+CREATE TABLE IF NOT EXISTS `chat` (
+  `chat_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id_1` mediumint(8) unsigned NOT NULL,
+  `user_id_2` mediumint(8) unsigned NOT NULL,
+  `subject` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`chat_id`),
+  KEY `user_id_1_FK` (`user_id_1`),
+  KEY `user_id_2_FK` (`user_id_2`),
+  CONSTRAINT `user_id_1_FK` FOREIGN KEY (`user_id_1`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `user_id_2_FK` FOREIGN KEY (`user_id_2`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `message` (
+  `message_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `chat_id` mediumint(8) unsigned NOT NULL,
+  `message_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `time_sent` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`message_id`),
+  KEY `chat_id_FK` (`chat_id`),
+  CONSTRAINT `chat_id_FK` FOREIGN KEY (`chat_id`) REFERENCES `chat` (`chat_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
