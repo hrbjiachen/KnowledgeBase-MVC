@@ -51,9 +51,12 @@ CREATE TABLE IF NOT EXISTS `chat` (
 CREATE TABLE IF NOT EXISTS `message` (
   `message_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `chat_id` mediumint(8) unsigned NOT NULL,
+  `sender_id` mediumint(8) unsigned NOT NULL,
   `message_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `time_sent` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`message_id`),
   KEY `chat_id_FK` (`chat_id`),
-  CONSTRAINT `chat_id_FK` FOREIGN KEY (`chat_id`) REFERENCES `chat` (`chat_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+  KEY `sender_id_FK` (`sender_id`),
+  CONSTRAINT `chat_id_FK` FOREIGN KEY (`chat_id`) REFERENCES `chat` (`chat_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `sender_id_FK` FOREIGN KEY (`sender_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
