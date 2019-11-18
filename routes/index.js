@@ -2,10 +2,13 @@ const express = require("express");
 const accountController = require("../controllers/accountController");
 const userController = require("../controllers/userController");
 const postController = require("../controllers/postController");
+const messageController = require("../controllers/messageController");
 
 const routes = express.Router();
 const postRoute = express.Router();
 const userRoute = express.Router();
+const messageRoute = express.Router();
+
 const redirectHome = (req, res, next) => {
   if (!req.session.user) {
     res.redirect("/");
@@ -36,5 +39,11 @@ postRoute.post("/add", postController.addPost);
 postRoute.get("/all", postController.getAllPost);
 postRoute.get("/:id", postController.getPostById);
 postRoute.get("/user/:id", postController.getPostByUser);
+
+
+//message route
+routes.use("/message", messageRoute);
+messageRoute.post("/user/:id", messageController.sendMessageById);
+messageRoute.get("/user/:id/history", messageController.getChatHistoryById);
 
 module.exports = routes;
