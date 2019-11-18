@@ -40,6 +40,7 @@ postRoute.get("/all", postController.getAllPost);
 postRoute.get("/:id", postController.getPostById);
 postRoute.get("/user/:id", postController.getPostByUser);
 
+
 //message route
 routes.use("/message", messageRoute);
 messageRoute.post("/user/:id", messageController.sendMessageById);

@@ -34,8 +34,6 @@ CREATE TABLE IF NOT EXISTS `post` (
   CONSTRAINT `user_id_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
-
 CREATE TABLE IF NOT EXISTS `chat` (
   `chat_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `user_id_1` mediumint(8) unsigned NOT NULL,
