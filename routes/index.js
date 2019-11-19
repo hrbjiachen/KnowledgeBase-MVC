@@ -36,6 +36,7 @@ userRoute.get("/all", userController.getAllUser);
 //post route
 routes.use("/post", postRoute);
 postRoute.post("/add", postController.addPost);
+postRoute.post("/reply", postController.replyPostById);
 postRoute.get("/all", postController.getAllPost);
 postRoute.get("/:id", postController.getPostById);
 postRoute.get("/user/:id", postController.getPostByUser);

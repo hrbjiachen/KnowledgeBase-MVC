@@ -48,6 +48,20 @@
 
         <button id="submitPostBtn" onclick="submitPost()">Post to Timeline</button>
 
+        <div id="latest-post-div" >
+            {{#each latestPost}}
+                <div class="post-block">
+                    <img class="circle" src="{{this.imgurl}}" alt="avatar" />
+                    <div class="post-text-block">
+                        <div class="post-title grey">{{ this.subject }}<span class="topic">{{ this.topic }}</span></div>
+                        <div class="post-detail grey">{{ this.detail }}</div>
+                        <div class="post-date grey">{{ this.date_created }}</div>
+                        <a class="post-replies-btn grey" href="/post/{{ this.post_id }}" >replies</a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        
 
     </div>
 </div>
