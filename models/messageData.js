@@ -46,7 +46,16 @@ const getChatHistory = async (params) => {
      order by time_sent desc`, [userA, userB, userB, userA, subject]);
 }
 
+const getAllChats = async (params) => {
+    let { user_id } = params;
+
+    return await db.execute(`Select * from (Select * from chat join user on 
+    (chat.user_id_1 = user.user_id or chat.user_id_2 = user.user_id)
+    where chat.user_id_1 = ? or chat.user_id_2 = ?) o where o.user_id != ?`, [user_id, user_id, user_id]);
+}
+
 module.exports = {
     sendMessageToUser,
-    getChatHistory
+    getChatHistory,
+    getAllChats
 }

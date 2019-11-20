@@ -22,6 +22,7 @@ routes.get("/", accountController.showPage);
 routes.get("/login", accountController.showLoginPage);
 routes.get("/signup", accountController.showLoginPage);
 routes.get("/home", redirectHome, accountController.showHomePage);
+routes.get("/messages", messageController.showMessagesPage);
 
 //account route
 routes.post("/signup", accountController.continueSignup);
@@ -45,6 +46,7 @@ postRoute.get("/user/:id", postController.getPostByUser);
 //message route
 routes.use("/message", messageRoute);
 messageRoute.post("/user/:id", messageController.sendMessageById);
-messageRoute.get("/user/:id/history", messageController.getChatHistoryById);
+messageRoute.get("/user/:id/:subject/history", messageController.getChatHistoryById);
+messageRoute.get("/all", messageController.getAllChats);
 
 module.exports = routes;
