@@ -40,13 +40,23 @@ const startChatWithUser = async (userA, userB, subject) => {
 const getChatHistory = async (params) => {
     let { user_id: userA, receiverId: userB, subject} = params;
 
-    return await db.execute(`Select * from chat
+    return await db.execute(`Select chat.*, message.*, user.fname, user.lname from chat
      join message on chat.chat_id = message.chat_id 
+     join user on message.sender_id = user.user_id
      where (user_id_1 = ? and user_id_2 = ?) or (user_id_1 = ? and user_id_2 = ?) and subject = ?
-     order by time_sent desc`, [userA, userB, userB, userA, subject]);
+     order by time_sent asc`, [userA, userB, userB, userA, subject]);
+}
+
+const getAllChats = async (params) => {
+    let { user_id } = params;
+
+    return await db.execute(`Select * from (Select * from chat join user on 
+    (chat.user_id_1 = user.user_id or chat.user_id_2 = user.user_id)
+    where chat.user_id_1 = ? or chat.user_id_2 = ?) o where o.user_id != ?`, [user_id, user_id, user_id]);
 }
 
 module.exports = {
     sendMessageToUser,
-    getChatHistory
+    getChatHistory,
+    getAllChats
 }
