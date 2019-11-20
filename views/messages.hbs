@@ -1,0 +1,30 @@
+<div class="header">
+    <div class="logo">k<span class="blue">b</span></div>
+    <button class="inline" onclick="logout()">Logout</button>
+</div>
+
+
+<div class="container">
+    <div class="left_div textcenter">
+        {{#each rows}}
+            <button class="chat-tile", onclick="onChatTile({{this.user_id}}, '{{this.subject}}')", id="{{this.user_id}}">
+                <img class="avatar-thumbnail" src="{{this.imgurl}}" alt="avatar" />
+                <h4 class="chat-name">{{this.fname}} {{this.lname}}</h4>
+                <h4 class="chat-subject">{{this.subject}}</h4>
+            </button>
+        {{/each}}
+    </div>
+    <div class="right_div">
+        <div class="chat-box">
+            
+        </div>
+        <div class="chat-text-box">
+            <form class="chat-form">
+                <input type="text" id="chat-message-form" placeholder="Write a message...">
+                <button type="submit" id="send-message-btn" onclick="onSendMessage(event)">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/messages.js" defer></script>
