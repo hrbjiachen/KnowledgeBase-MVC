@@ -17,9 +17,17 @@ const getPostById = async id =>
 const getPostsByUserId = async user_id =>
   await db.execute("Select * from post where user_id = ?", [user_id]);
 
+const getPostsByKey = async key =>
+  await db.execute("Select * from knowledgebase.post where detail like ? or subject like ?", ['%' + key + '%', '%' + key + '%']);
+
+const getPostsByFilter = async key =>
+  await db.execute("Select * from post where subject like %?%", [key])
+
 module.exports = {
   add,
   getAll,
   getPostById,
-  getPostsByUserId
+  getPostsByUserId,
+  getPostsByKey,
+  getPostsByFilter
 };

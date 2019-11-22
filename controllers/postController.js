@@ -31,9 +31,25 @@ const getPostByUser = async (req, res) => {
   res.json(rows);
 };
 
+const getPostsByKey = async (req, res) => {
+  const key = req.body.key;
+  const [rows] = await postData.getPostsByKey(key);
+  console.log(rows)
+  res.json(rows)
+}
+
+/*
+cosnt getPostsByFilter = async (req, res) => {
+  const filter = req.params.filter;
+  const [rows] = await postData.getPostsByFilter(filter);
+  res.json(rows)
+}
+*/
+
 module.exports = {
   addPost,
   getAllPost,
   getPostById,
-  getPostByUser
+  getPostByUser,
+  getPostsByKey
 };

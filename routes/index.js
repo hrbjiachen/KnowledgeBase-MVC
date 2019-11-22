@@ -37,4 +37,7 @@ postRoute.get("/all", postController.getAllPost);
 postRoute.get("/:id", postController.getPostById);
 postRoute.get("/user/:id", postController.getPostByUser);
 
+//postRoute.get("/filter", postController.getPostsByFilter);
+postRoute.post("/search", postController.getPostsByKey);
+
 module.exports = routes;
