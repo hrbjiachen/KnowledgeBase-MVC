@@ -53,7 +53,7 @@ const searchPost = async () => {
       key
     });
     showToastMessage("Post submitted!");
-//    console.log(result)
+    console.log(result)
   } else {
     showToastMessage("Input cannot be empty!");
   }

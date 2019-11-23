@@ -43,8 +43,7 @@ postRoute.get("/:id", postController.getPostById);
 postRoute.get("/user/:id", postController.getPostByUser);
 
 //postRoute.get("/filter", postController.getPostsByFilter);
-postRoute.post("/search", postController.getPostsByKey);
-
+postRoute.post("/search", postController.showSearchPage);
 
 //message route
 routes.use("/message", messageRoute);

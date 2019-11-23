@@ -1,9 +1,9 @@
 <div class="header">
     <div class="logo">k<span class="blue">b</span></div>
-    <div class="inline">
+    <form class="inline" method="post" action="post/search">
         <input id="searchBar" type="text" placeholder="Search.." name="search_keyword">
-        <button type="submit" onclick="searchPost()"><i class="fa fa-search"></i></button>
-    </div>
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
     <button class="inline" onclick="logout()">Logout</button>
     <div class="inline greetings">Hello {{userInfo.fname}} {{userInfo.lname}}</div>
 </div>
@@ -61,7 +61,7 @@
                 </div>
             {{/each}}
         </div>
-        
+
 
     </div>
 </div>
