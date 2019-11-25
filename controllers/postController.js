@@ -41,30 +41,21 @@ const getPostByUser = async (req, res) => {
   res.json(rows);
 };
 
-const getPostsByKey = async (req, res) => {
-  console.log("yeet")
-  const key = req.body.key;
-  const [rows] = await postData.getPostsByKey(key);
-  console.log(rows)
-  res.json(rows)
-}
-
 const showSearchPage = async (req, res) => {
-  console.log("Got here.");
-  console.log(req);
   const key = req.body.search_keyword;
   const [searchedPosts] = await postData.getPostsByKey(key);
   console.log(searchedPosts)
   res.render("search", { searchedPosts: searchedPosts, homeCSS: true, postCSS: true});
 };
 
-/*
-cosnt getPostsByFilter = async (req, res) => {
-  const filter = req.params.filter;
-  const [rows] = await postData.getPostsByFilter(filter);
-  res.json(rows)
+const getPostsByFilter = async (req, res) => {
+  console.log("Got here.");
+  console.log(req);
+  const key = req.body.search_keyword;
+  const [searchedPosts] = await postData.getPostsByFilter(key);
+  console.log(searchedPosts)
+  res.render("search", { searchedPosts: searchedPosts, homeCSS: true, postCSS: true});
 }
-*/
 
 const replyPostById = async (req, res) => {
   try {
@@ -85,8 +76,8 @@ module.exports = {
   getAllPost,
   getLatestPost,
   getPostById,
-  getPostsByKey,
   getPostByUser,
   replyPostById,
-  showSearchPage
+  showSearchPage,
+  getPostsByFilter
 };

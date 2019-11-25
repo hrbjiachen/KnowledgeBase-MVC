@@ -33,7 +33,9 @@ const getPostsByKey = async key =>
     " where post.detail like ? or post.subject like ?", ['%' + key + '%', '%' + key + '%']);
 
 const getPostsByFilter = async key =>
-  await db.execute("Select * from post where subject like ?", ['%' + key + '%'])
+  await db.execute("select post.*, user.fname, user.lname, user.imgurl from" +
+    " user inner join post on user.user_id = post.user_id" +
+    " where post.topic = ?", [key]);
 
 const replyPostById = async data => {
     const { post_id, detail, user_id } = data;
