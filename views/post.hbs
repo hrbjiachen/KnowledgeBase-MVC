@@ -1,15 +1,14 @@
 <div class="header">
     <div class="logo">k<span class="blue">b</span></div>
-    <div class="inline">
-        <input type="text" placeholder="Search.." name="search_keyword">
+    <form class="inline" method="post" action="post/search">
+        <input id="searchBar" type="text" placeholder="Search.." name="search_keyword">
         <button type="submit"><i class="fa fa-search"></i></button>
-    </div>
+    </form>
     <button class="inline" onclick="logout()">Logout</button>
     <div class="inline greetings">Hello {{userInfo.fname}} {{userInfo.lname}}</div>
 </div>
 
-
-<div class="container">    
+<div class="container">
     <div class="right_div">
         <div class="post-block">
             <img class="circle" src="{{postReply.imgurl}}" alt="avatar" />
