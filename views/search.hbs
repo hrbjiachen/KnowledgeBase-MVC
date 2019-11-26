@@ -1,0 +1,30 @@
+<div class="header">
+    <div class="logo">k<span class="blue">b</span></div>
+    <form class="inline" method="post" action="post/search">
+        <input id="searchBar" type="text" placeholder="Search.." name="search_keyword">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <button class="inline" onclick="logout()">Logout</button>
+    <div class="inline greetings">Hello {{userInfo.fname}} {{userInfo.lname}}</div>
+</div>
+
+<div class="container">
+    <div class="right_div">
+        <div id="latest-post-div" >
+            {{#each searchedPosts}}
+                <div class="post-block">
+                    <img class="circle" src="{{this.imgurl}}" alt="avatar" />
+                    <div class="post-text-block">
+                        <div class="post-title grey">{{ this.subject }}<span class="topic">{{ this.topic }}</span></div>
+                        <div class="post-detail grey">{{ this.detail }}</div>
+                        <div class="post-date grey">{{ this.date_created }}</div>
+                        <a class="post-replies-btn grey" href="/post/{{ this.post_id }}" >replies</a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div id="snackbar"></div>
+<script src="/js/home.js" defer></script>
