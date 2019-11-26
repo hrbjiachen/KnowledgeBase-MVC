@@ -1,13 +1,12 @@
 <div class="header">
     <div class="logo">k<span class="blue">b</span></div>
-    <div class="inline">
-        <input type="text" placeholder="Search.." name="search_keyword">
+    <form class="inline" method="post" action="post/search">
+        <input id="searchBar" type="text" placeholder="Search.." name="search_keyword">
         <button type="submit"><i class="fa fa-search"></i></button>
-    </div>
+    </form>
     <button class="inline" onclick="logout()">Logout</button>
     <div class="inline greetings">Hello {{userInfo.fname}} {{userInfo.lname}}</div>
 </div>
-
 
 <div class="container">
     <div class="left_div textcenter">
@@ -21,7 +20,7 @@
                 <td>3</td>
             </tr>
             <tr>
-                <td width="100px"><a href="/">Messages</a></td>
+                <td width="100px"><a href="/messages">Messages</a></td>
                 <td>5</td>
             </tr>
             <tr>
@@ -47,6 +46,33 @@
         </select>
 
         <button id="submitPostBtn" onclick="submitPost()">Post to Timeline</button>
+
+        <p>Search by topic</p>
+        <form class="inline" method="post" action="post/filter">
+            <select id="filter" name="search_keyword">
+              <option value="">Topic</option>
+              <option value="php">php</option>
+              <option value="nodejs">nodejs</option>
+              <option value="java">java</option>
+              <option value="sql">sql</option>
+              <option value="zend">zend</option>
+            </select>
+            <button type="submit" id="submitFilterBtn">Go</button>
+        </form>
+
+        <div id="latest-post-div" >
+            {{#each latestPost}}
+                <div class="post-block">
+                    <img class="circle" src="{{this.imgurl}}" alt="avatar" />
+                    <div class="post-text-block">
+                        <div class="post-title grey">{{ this.subject }}<span class="topic">{{ this.topic }}</span></div>
+                        <div class="post-detail grey">{{ this.detail }}</div>
+                        <div class="post-date grey">{{ this.date_created }}</div>
+                        <a class="post-replies-btn grey" href="/post/{{ this.post_id }}" >replies</a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
 
 
     </div>

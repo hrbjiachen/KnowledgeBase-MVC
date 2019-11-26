@@ -1,0 +1,52 @@
+<div class="header">
+    <div class="logo">k<span class="blue">b</span></div>
+    <form class="inline" method="post" action="post/search">
+        <input id="searchBar" type="text" placeholder="Search.." name="search_keyword">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <button class="inline" onclick="logout()">Logout</button>
+    <div class="inline greetings">Hello {{userInfo.fname}} {{userInfo.lname}}</div>
+</div>
+
+<div class="container">
+    <div class="right_div">
+        <div class="post-block">
+            <img class="circle" src="{{postReply.imgurl}}" alt="avatar" />
+            <div class="post-text-block">
+                <div id="post-id" hidden="True">{{postReply.post_id}}</div>
+                <div class="post-title grey">{{ postReply.subject }}<span class="topic">{{ postReply.topic }}</span></div>
+                <div class="post-detail grey">{{ postReply.detail }}</div>
+            </div>
+        </div>
+        <div class="reply-block">
+            {{#each replies}}
+                <div class="post-block">
+                <img class="circle reply-avatar" src="{{this.imgurl}}" alt="avatar" />
+                <div class="post-text-block">
+                    {{!-- <div id="post-id" hidden="True">{{this.post_id}}</div> --}}
+                    {{!-- <div class="post-title grey">{{ this.subject }}<span class="topic">{{ postReply.topic }}</span></div> --}}
+                    <div class="post-detail grey">{{ this.detail }}</div>
+                    </div>
+                </div>
+            {{/each}}
+
+            {{!-- {{#each replies}}
+                <div>Reply ID: {{ this.reply_id }}</div>
+                <div>Post ID: {{ this.post_id }}</div>
+                <div>User ID: {{ this.user_id }}</div>
+                <div>Detail: {{ this.detail }}</div>
+                <div>Date Created: {{ this.date_created }}</div>
+            {{/each}} --}}
+
+        </div>
+
+        <textarea type="text" rows="4" id="reply-detail" placeholder="Explain in detail..."></textarea>
+
+        <button id="submitPostBtn" onclick="submitReply()">Post to Timeline</button>
+
+    </div>
+</div>
+
+<div id="snackbar"></div>
+<script src="/js/home.js" defer></script>
+<script src="/js/post.js" defer></script>

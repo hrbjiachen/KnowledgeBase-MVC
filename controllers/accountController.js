@@ -1,4 +1,5 @@
 const userData = require("../models/userData");
+const postData = require("../models/postData");
 const rm = require("../util/responseMsg");
 
 const showPage = (req, res) => {
@@ -13,9 +14,10 @@ const showLoginPage = (req, res) => {
   res.render("login", { loginCSS: true });
 };
 
-const showHomePage = (req, res) => {
+const showHomePage = async (req, res) => {
   const userInfo = req.session.user;
-  res.render("home", { userInfo, homeCSS: true });
+  const [latestPost] = await postData.getLatest();
+  res.render("home", { userInfo, latestPost, homeCSS: true, postCSS: true });
 };
 
 const continueSignup = async (req, res) => {

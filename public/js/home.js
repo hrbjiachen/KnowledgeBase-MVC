@@ -31,7 +31,6 @@ const callServer = async (path, method, data) => {
   try {
     let url = `${window.location.origin}/${path}`;
     let response;
-
     if (data) {
       response = await fetch(url, {
         method,
@@ -41,10 +40,22 @@ const callServer = async (path, method, data) => {
     } else {
       response = await fetch(url, { method });
     }
-
     return await response.json();
   } catch (e) {
     return e;
+  }
+};
+
+const searchPost = async () => {
+  const key = document.getElementById("searchBar").value;
+  if (key.trim() !== "") {
+    const result = await callServer("post/search", "POST", {
+      key
+    });
+    showToastMessage("Post submitted!");
+    console.log(result)
+  } else {
+    showToastMessage("Input cannot be empty!");
   }
 };
 
