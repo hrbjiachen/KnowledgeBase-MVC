@@ -27,6 +27,16 @@ const getPostById = async id =>
 const getPostsByUserId = async user_id =>
   await db.execute("Select * from post where user_id = ?", [user_id]);
 
+const getPostsByKey = async key =>
+  await db.execute("select post.*, user.fname, user.lname, user.imgurl from" +
+    " user inner join post on user.user_id = post.user_id" +
+    " where post.detail like ? or post.subject like ?", ['%' + key + '%', '%' + key + '%']);
+
+const getPostsByFilter = async key =>
+  await db.execute("select post.*, user.fname, user.lname, user.imgurl from" +
+    " user inner join post on user.user_id = post.user_id" +
+    " where post.topic = ?", [key]);
+
 const replyPostById = async data => {
     const { post_id, detail, user_id } = data;
     const sql = "Insert into reply (user_id, post_id, detail) values ('"+user_id+"','"+post_id+"','"+detail+"')";
@@ -45,6 +55,8 @@ module.exports = {
   getAll,
   getLatest,
   getPostById,
+  getPostsByKey,
+  getPostsByFilter,
   getPostsByUserId,
   replyPostById,
   getRepliesByPostId
