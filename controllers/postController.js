@@ -49,8 +49,6 @@ const showSearchPage = async (req, res) => {
 };
 
 const getPostsByFilter = async (req, res) => {
-  console.log("Got here.");
-  console.log(req);
   const key = req.body.search_keyword;
   const [searchedPosts] = await postData.getPostsByFilter(key);
   console.log(searchedPosts)
