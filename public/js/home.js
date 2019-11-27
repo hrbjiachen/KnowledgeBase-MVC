@@ -49,7 +49,7 @@ const callServer = async (path, method, data) => {
 const searchPost = async () => {
   const key = document.getElementById("searchBar").value;
   if (key.trim() !== "") {
-    const result = await callServer("post/search", "POST", {
+    const result = await callServer("/search", "POST", {
       key
     });
     showToastMessage("Post submitted!");
