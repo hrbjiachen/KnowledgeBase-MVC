@@ -2,6 +2,7 @@ const express = require("express");
 const accountController = require("../controllers/accountController");
 const userController = require("../controllers/userController");
 const postController = require("../controllers/postController");
+const profileController = require("../controllers/profileController");
 const messageController = require("../controllers/messageController");
 
 const routes = express.Router();
@@ -23,6 +24,7 @@ routes.get("/login", accountController.showLoginPage);
 routes.get("/signup", accountController.showLoginPage);
 routes.get("/home", redirectHome, accountController.showHomePage);
 routes.get("/messages", messageController.showMessagesPage);
+routes.get("/profile/:id", profileController.showProfilePage);
 
 //account route
 routes.post("/signup", accountController.continueSignup);

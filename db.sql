@@ -1,5 +1,3 @@
-CREATE DATABASE `knowledgebase`
-
 CREATE TABLE IF NOT EXISTS `user` (
   `user_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,

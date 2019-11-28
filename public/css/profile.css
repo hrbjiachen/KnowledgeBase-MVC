@@ -1,0 +1,217 @@
+div.logo {
+  padding: 50px;
+  font-size: 50px;
+  font-weight: bold;
+  display: inline;
+}
+
+.container {
+  margin: auto;
+}
+
+button.inline {
+  margin: 20px 50px;
+  width: 150px;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  float: right;
+}
+
+#latest-post-div  .circle {
+  width: 50%;
+}
+
+.greetings {
+  float: right;
+  margin: 30px 50px;
+}
+
+.inline input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  width: 25%;
+  background: #f1f1f1;
+  margin: 0;
+}
+
+.inline button {
+  width: 60px;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+.inline button:hover,
+button.inline:hover {
+  background: #0b7dda;
+}
+
+.edit_profile_div {
+  margin-top: 50px;
+  text-decoration: underline;
+}
+
+table.link {
+  margin: 10% 0 0 40%;
+  text-align: left;
+}
+
+.top_div {
+  margin: 0 auto;
+  float: top;
+  width: 50%;
+  min-height: 20vh;
+  padding: 50px;
+  /* margin-right: 10px; */
+  background: #fafafa;
+}
+
+.bottom_div {
+  margin: 0 auto;
+  width: 50%;
+  padding: 50px;
+  float: bottom;
+  background: #fafafa;
+}
+
+.center_div {
+  margin: 0 auto;
+  width: auto;
+  /* background: red; */
+}
+
+.left_div {
+  float: left;
+  width: auto;
+  padding-left:50px;
+  background: #fafafa;
+}
+
+.right_div {
+  float: right;
+  width: auto;
+  padding-right:50px;
+  background: #fafafa;
+}
+
+.right_div input[type="text"],
+select,
+textarea {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 20px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button#submitPostBtn {
+  width: 50%;
+  background: #2196f3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button#submitFilterBtn:hover {
+  background-color: #0b7dda;
+}
+
+select#filter {
+  width: 25%;
+  display: inline;
+}
+
+button#submitFilterBtn {
+  width: 12.5%;
+  background: #2196f3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button#submitPostBtn:hover {
+  background-color: #0b7dda;
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #0b7dda;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
