@@ -19,12 +19,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 /* Test user */
 INSERT INTO `user` (`user_id`, `password`, `email`, `fname`, `lname`, `imgurl`, `description`, `country`, `account_type`, `birthday`) VALUES (1, 'password', 'test1@test.com', 'John', 'Doe', 'https://randomuser.me/api/portraits/men/1.jpg', 'Hello, I am John Doe!', 'Canada', 'NORMAL', '1993-11-05');
+INSERT INTO `user` (`user_id`, `password`, `email`, `fname`, `lname`, `imgurl`, `description`, `country`, `account_type`, `birthday`) VALUES (2, 'password', 'test2@test.com', 'John', 'Smith', 'https://randomuser.me/api/portraits/men/3.jpg', 'Hello, I am John Smith!', 'Canada', 'NORMAL', '1999-11-11');
 
 /* Test post */
 INSERT INTO `post` (`post_id`, `user_id`, `subject`, `detail`, `topic`, `date_created`, `date_updated`) VALUES
-(1, 1, 'Fusce vel metus vel dui mollis ', 'Nulla eu ligula velit. Pellentesque id arcu posuere, tristique tellus at, pellentesque eros. Cras et nunc non nibh viverra sodales. Duis suscipit purus risus, vitae venenatis dolor dignissim quis. ', 'nodejs', '2019-11-19 04:30:22', '2019-11-19 07:38:17'),
-(2, 1, 'Lorem ipsum dolor sit amet', 'Consectetur adipiscing elit. Phasellus sit amet turpis nec nisi lacinia pulvinar. Phasellus lorem orci, pellentesque non semper sed, vestibulum ut neque. Morbi vitae enim efficitur, dictum nisi a, placerat magna. ', 'sql', '2019-11-19 05:49:57', '2019-11-19 07:38:42'),
-(3, 1, 'Sed arcu enim', 'Consequat non dapibus nec, cursus id ex. Curabitur commodo convallis ipsum. Suspendisse vulputate mauris eu pulvinar iaculis. Donec ligula nisl, blandit ac mi quis, porta auctor massa. Integer nec pharetra ex. ', 'sql', '2019-11-19 05:50:10', '2019-11-19 07:38:38');
+(1, 1, 'Post 1  From User 1', 'Nulla eu ligula velit. Pellentesque id arcu posuere, tristique tellus at, pellentesque eros. Cras et nunc non nibh viverra sodales. Duis suscipit purus risus, vitae venenatis dolor dignissim quis. ', 'nodejs', '2019-11-19 04:30:22', '2019-11-28 02:18:38'),
+(2, 2, 'Post 2 From User 2', 'Consectetur adipiscing elit. Phasellus sit amet turpis nec nisi lacinia pulvinar. Phasellus lorem orci', 'sql', '2019-11-19 05:49:57', '2019-11-28 02:17:20'),
+(3, 1, 'Post 3  From User 1', 'Consequat non dapibus nec, cursus id ex. Curabitur commodo convallis ipsum. Suspendisse vulputate mauris eu pulvinar iaculis. Donec ligula nisl, blandit ac mi quis, porta auctor massa. Integer nec pharetra ex. ', 'sql', '2019-11-19 05:50:10', '2019-11-28 02:18:40');
 
 
 CREATE TABLE IF NOT EXISTS `post` (

@@ -65,10 +65,10 @@
                 <div class="post-block">
                     <img class="circle" src="{{this.imgurl}}" alt="avatar" />
                     <div class="post-text-block">
-                        <div class="post-title grey">{{ this.subject }}<span class="topic">{{ this.topic }}</span></div>
+                        <div class="post-title grey">{{ this.subject }}<span class="post-topic">{{ this.topic }}</span></div>
                         <div class="post-detail grey">{{ this.detail }}</div>
-                        <div class="post-date grey">{{ this.date_created }}</div>
-                        <a class="post-replies-btn grey" href="/post/{{ this.post_id }}" >replies</a>
+                        <div class="post-date grey">{{ this.date_formated }}</div>
+                        <a class="post-replies-btn grey" href="/post/{{ this.post_id }}" >{{this.replies_count}} replies</a>
                     </div>
                 </div>
             {{/each}}
