@@ -1,8 +1,10 @@
-div.logo {
+a.logo {
   padding: 50px;
   font-size: 50px;
   font-weight: bold;
   display: inline;
+  color: black;
+  text-decoration: none;
 }
 
 button.inline {
