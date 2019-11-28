@@ -36,15 +36,11 @@ const getPostsByFilter = async key =>
 
 const replyPostById = async data => {
     const { post_id, detail, user_id } = data;
-    const sql = "Insert into reply (user_id, post_id, detail) values ('"+user_id+"','"+post_id+"','"+detail+"')";
     return await db.query("Insert into reply (user_id, post_id, detail) values(?,?,?)", [user_id, post_id, detail]);
   };
 
-const getRepliesByPostId = async post_id =>{
-  const rows = await db.execute("SELECT reply.*,user.imgurl FROM reply,user WHERE reply.user_id = user.user_id AND reply.post_id = ? ORDER BY `date_created`", [post_id]);
-  // await db.execute("Select * from reply where post_id = ?", [post_id]);
-  return rows;
-}
+const getRepliesByPostId = async post_id =>
+  await db.execute("SELECT reply.*,user.imgurl FROM reply,user WHERE reply.user_id = user.user_id AND reply.post_id = ? ORDER BY `date_created`", [post_id]);
 
 
 module.exports = {
