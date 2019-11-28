@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `reply` (
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`reply_id`),
-  KEY `user_id_FK` (`user_id`),
+  KEY `post_id_FK` (`post_id`),
   CONSTRAINT `post_id_FK` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
