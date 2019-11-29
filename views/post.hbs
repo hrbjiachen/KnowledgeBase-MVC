@@ -1,12 +1,5 @@
-<div class="header">
-    <div class="logo">k<span class="blue">b</span></div>
-    <form class="inline" method="post" action="post/search">
-        <input id="searchBar" type="text" placeholder="Search.." name="search_keyword">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-    <button class="inline" onclick="logout()">Logout</button>
-    <div class="inline greetings">Hello {{userInfo.fname}} {{userInfo.lname}}</div>
-</div>
+{{>header}}
+
 
 <div class="container">
     <div class="right_div">
@@ -14,8 +7,9 @@
             <img class="circle" src="{{postReply.imgurl}}" alt="avatar" />
             <div class="post-text-block">
                 <div id="post-id" hidden="True">{{postReply.post_id}}</div>
-                <div class="post-title grey">{{ postReply.subject }}<span class="topic">{{ postReply.topic }}</span></div>
+                <div class="post-title grey">{{ postReply.subject }}<span class="post-topic">{{ postReply.topic }}</span></div>
                 <div class="post-detail grey">{{ postReply.detail }}</div>
+                <div class="post-date grey">{{ this.date_formated }}</div>
             </div>
         </div>
         <div class="reply-block">
