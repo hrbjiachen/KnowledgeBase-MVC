@@ -12,8 +12,7 @@ const add = async data => {
 const getAll = async () => await db.execute("Select * from post");
 
 const getLatest = async () => {
-  return await db.execute("SELECT COUNT(*) AS replies_count,DATE_FORMAT(post.date_created,'%b,%d %Y') AS date_formated" +
-  ",post.*,user.fname,user.lname,user.imgurl " +
+  return await db.execute("SELECT COUNT(*) AS replies_count,DATE_FORMAT(post.date_created,'%b,%d %Y') AS date_formated,post.*,user.fname,user.lname,user.imgurl " +
   "FROM post,user,reply WHERE post.user_id = user.user_id AND reply.post_id = post.post_id GROUP BY post_id ORDER BY `date_created` DESC LIMIT 2");
 }
 
