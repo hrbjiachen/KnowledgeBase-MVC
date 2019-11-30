@@ -1,0 +1,37 @@
+{{>header}}
+
+<div class="container">
+    <div class="left_div textcenter">
+        <img class="circle" src="{{userInfo.imgurl}}" alt="avatar" />
+        <h2>{{userInfo.fname}} {{userInfo.lname}}</h2>
+        <p class="grey">{{userInfo.description}}</p>
+
+        <table class="link">
+            <tr>
+                <td width="100px"><a href="/post/all">Posts</a></td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td width="100px"><a href="/messages">Messages</a></td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td width="100px"><a href="/">Likes</a></td>
+                <td>10</td>
+            </tr>
+        </table>
+
+        <div class="edit_profile_div">Edit Profile</div>
+    </div>
+    <div class="right_div">
+        <h2>All posts</h2>
+        <div id="latest-post-div" >
+            {{#each allMyPosts}}
+                {{>eachPost}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div id="snackbar"></div>
+<script src="/js/home.js" defer></script>
