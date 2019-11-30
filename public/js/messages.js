@@ -6,7 +6,6 @@ const onChatTile = (id, subject) => {
 
     curUser = id;
     curSubject = subject;
-    console.log(curUser, curSubject);
     pullChatHistory(id, subject).then(data => {
         renderChatbox(data);
     }).catch(error => {

@@ -31,7 +31,7 @@ const startChatWithUser = async (userA, userB, subject) => {
         [userA, userB, subject]
     );
 
-    let [rows] = await db.execute("Select * from chat where user_id_1 = ? and user_id_2 = ?", [userA, userB]);
+    let [rows] = await db.execute("Select * from chat where user_id_1 = ? and user_id_2 = ? and subject = ?", [userA, userB, subject]);
     let { chat_id } = rows[0];
 
     return chat_id;
