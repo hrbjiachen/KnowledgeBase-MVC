@@ -1,8 +1,10 @@
-div.logo {
+a.logo {
   padding: 50px;
   font-size: 50px;
   font-weight: bold;
   display: inline;
+  color: black;
+  text-decoration: none;
 }
 
 button.inline {
@@ -110,10 +112,10 @@ select#filter {
 }
 
 button#submitFilterBtn {
-  width: 12.5%;
+  width: 20%;
   background: #2196f3;
   color: white;
-  padding: 14px 20px;
+  padding: 10px 10px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
@@ -122,6 +124,25 @@ button#submitFilterBtn {
 
 button#submitPostBtn:hover {
   background-color: #0b7dda;
+}
+
+.pagingButton{
+  width: 120px;
+  color: #0b7dda;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.pagingButton:hover {
+  color: #2196f3;
+}
+
+#lastPageButton{
+  float: left;
+}
+
+#nextPageButton{
+  float: right;
 }
 
 #snackbar {

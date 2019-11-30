@@ -1,5 +1,6 @@
 const postData = require("../models/postData");
 const rm = require("../util/responseMsg");
+const postProcessing = require("../util/postProcessing");
 
 const addPost = async (req, res) => {
   try {
@@ -14,22 +15,23 @@ const addPost = async (req, res) => {
   }
 };
 
-const getAllPost = async (req, res) => {
-  const [rows] = await postData.getAll();
-  res.json(rows);
+const getAllMyPosts = async (req, res) => {
+  const userInfo = req.session.user;
+  const user_id = userInfo.user_id;
+  const [allMyPosts] = await postData.getAllMyPosts(user_id);
+  postProcessing(allMyPosts);
+  res.render('myPosts', {userInfo, allMyPosts, homeCSS: true, postCSS: true });
 };
 
 const getLatestPost = async (req, res) => {
-  const [rows] = await postData.getAll();
+  const [rows] = await postData.getLatest();
   res.json(rows);
 };
 
 const getPostById = async (req, res) => {
-  // const userInfo = req.session.user;
   const post_id = req.params.id;
   const [post] = await postData.getPostById(post_id);
   const [replies] = await postData.getRepliesByPostId(post_id);
-  console.log(replies);
   const postReply = post[0];
   res.render('post', {postReply, replies, homeCSS: true, postCSS: true });
 
@@ -44,24 +46,19 @@ const getPostByUser = async (req, res) => {
 const showSearchPage = async (req, res) => {
   const key = req.body.search_keyword;
   const [searchedPosts] = await postData.getPostsByKey(key);
-  console.log(searchedPosts)
   res.render("search", { searchedPosts: searchedPosts, homeCSS: true, postCSS: true});
 };
 
 const getPostsByFilter = async (req, res) => {
-  console.log("Got here.");
-  console.log(req);
   const key = req.body.search_keyword;
   const [searchedPosts] = await postData.getPostsByFilter(key);
-  console.log(searchedPosts)
   res.render("search", { searchedPosts: searchedPosts, homeCSS: true, postCSS: true});
 }
 
 const replyPostById = async (req, res) => {
   try {
-    // const userInfo = req.session.user;
-    // const { user_id } = userInfo;
-    const user_id = 1;
+    const userInfo = req.session.user;
+    const user_id = userInfo.user_id;
     const [rows] = await postData.replyPostById({ ...req.body, user_id });
     if (rows.insertId) {
       res.json({ message: rm.SUCCESS });
@@ -73,7 +70,7 @@ const replyPostById = async (req, res) => {
 
 module.exports = {
   addPost,
-  getAllPost,
+  getAllMyPosts,
   getLatestPost,
   getPostById,
   getPostByUser,

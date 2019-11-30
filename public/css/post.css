@@ -1,6 +1,5 @@
 .post-block{
     margin: 20px;
-    width: 400px;
     display: -webkit-box;
 }
 
@@ -8,32 +7,38 @@
     color: slategray;
 }
 
-.topic{
-    padding-left: 10px;
-    padding-right: 10px;
-    border: 2px solid skyblue;
-    float:right;
-}
-
 .post-text-block{
-    margin-left: 10px;
+    margin: 10px;
+    width:400px;
+    height: 120px;
 }
 
 .post-title{
     font-size: 1.2em;
 }
 
+.post-topic{
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 2px solid skyblue;
+    float:right;
+}
+
 .post-detail{
+    margin: 5px;
     padding-left: 20px;
     font-size: 1em;
+    min-height: 3em;
 }
 
 .post-date{
-    font-size: 0.5em;
+    float:left;
+    font-size: 1em;
 }
 
 .post-replies-btn{
-    text-decoration: none;
+    float:right;
+    /* text-decoration: none; */
 }
 .reply-block{
     padding-left: 100px;

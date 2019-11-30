@@ -1,3 +1,6 @@
+// For latest posts
+let page = 0;
+
 const logout = async () => {
   await callServer("logout", "POST");
   window.location = window.location.origin;
@@ -34,11 +37,15 @@ const callServer = async (path, method, data) => {
     if (data) {
       response = await fetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(data)
       });
     } else {
-      response = await fetch(url, { method });
+      response = await fetch(url, {
+        method
+      });
     }
     return await response.json();
   } catch (e) {
@@ -49,7 +56,7 @@ const callServer = async (path, method, data) => {
 const searchPost = async () => {
   const key = document.getElementById("searchBar").value;
   if (key.trim() !== "") {
-    const result = await callServer("post/search", "POST", {
+    const result = await callServer("/search", "POST", {
       key
     });
     showToastMessage("Post submitted!");
@@ -58,6 +65,54 @@ const searchPost = async () => {
     showToastMessage("Input cannot be empty!");
   }
 };
+
+const postsPaging = increment => {
+  const latestPosts = document.getElementById("latest-post-div").children;
+  const lastPageButton = document.getElementById("lastPageButton");
+  const nextPageButton = document.getElementById("nextPageButton");
+  const numOfPage = Math.ceil(latestPosts.length/2)
+  page = page + increment;
+
+  if(page == 0){
+    lastPageButton.style.display =  "none";
+  }else{
+    lastPageButton.style.display =  "inline";
+  }
+
+  if(page == numOfPage - 1){
+    nextPageButton.style.display =  "none";
+  }else{
+    nextPageButton.style.display =  "inline";
+  }
+
+  //Hide all posts first
+  for (let index = 0; index < latestPosts.length; index++) {
+    const post = latestPosts[index];
+    post.style.display = "none";
+  }
+
+  for (let index = page*2; index < latestPosts.length & index < page * 2 + 2; index++) {
+    const post = latestPosts[index];
+    post.style.display = "";
+  }
+
+}
+
+// const nextPage = () => {
+//   page++;
+//   for (let index = 2; index < latestPosts.length; index++) {
+//     const post = latestPosts[index];
+//     post.style.display = "none";
+//   }
+// }
+
+// const lastPage = () => {
+//   page--;
+//   for (let index = 2; index < latestPosts.length; index++) {
+//     const post = latestPosts[index];
+//     post.style.display = "none";
+//   }
+// }
 
 const showToastMessage = msg => {
   let toastMessage = document.getElementById("snackbar");
@@ -76,3 +131,4 @@ const shouldShowToast = () => {
 };
 
 shouldShowToast();
+postsPaging(0);
