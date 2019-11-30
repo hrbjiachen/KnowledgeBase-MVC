@@ -1,4 +1,5 @@
 const Message = require("../models/messageData");
+const User = require("../models/userData")
 const rm = require("../util/responseMsg");
 
 const sendMessageById = async (req, res) => {
@@ -40,9 +41,21 @@ const showMessagesPage = async (req, res) => {
     }
 }
 
+const showInitialMessagesPage = async (req, res) => {
+    try {
+        const [rows] = await User.getUserById(req.params.id);
+        if (rows.length) {
+            res.render("sendMessage", { homeCSS: true, rows});
+        }
+    } catch (error) {
+        res.render("error", { error });
+    }
+}
+
 module.exports = {
     sendMessageById,
     getChatHistoryById,
     showMessagesPage,
-    getAllChats
+    getAllChats,
+    showInitialMessagesPage
 }

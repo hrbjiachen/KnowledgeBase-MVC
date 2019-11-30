@@ -7,7 +7,7 @@
 <div class="container">
     <div class="left_div textcenter">
         {{#each rows}}
-            <button class="chat-tile", onclick="onChatTile({{this.user_id}}, '{{this.subject}}')", id="{{this.user_id}}">
+            <button class="chat-tile", onclick="onChatTile({{this.user_id}}, '{{this.subject}}')" id="{{this.user_id}}-{{this.subject}}">
                 <img class="avatar-thumbnail" src="{{this.imgurl}}" alt="avatar" />
                 <h4 class="chat-name">{{this.fname}} {{this.lname}}</h4>
                 <h4 class="chat-subject">{{this.subject}}</h4>

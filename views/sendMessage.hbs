@@ -1,0 +1,20 @@
+<div class="header">
+    <div class="logo">k<span class="blue">b</span></div>
+    <button class="inline" onclick="logout()">Logout</button>
+</div>
+
+
+<div class="container">
+    <div class="chat-text-box">
+        {{#each rows}}
+            <img class="circle" src={{this.imgurl}} alt={{this.fname}} {{this.lname}} />
+            <form class="chat-form">
+                <input type="text" id="message-subject" placeholder="Subject" required>
+                <input type="text" id="message-content" placeholder="Message" required>
+                <button class="inline" type="submit" id="send-message-btn" onclick="onSendInitialMessage(event, {{this.user_id}})">Send</button>
+            </form>
+        {{/each}}
+    </div>
+</div>
+
+<script src="/js/messages.js" defer></script>

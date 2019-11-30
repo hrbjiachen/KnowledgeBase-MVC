@@ -17,7 +17,7 @@ const sendMessageToUser = async (params) => {
 }
 
 const startChatWithUser = async (userA, userB, subject) => {
-    let [response] = await db.execute("Select * from chat where user_id_1 = ? and user_id_2 = ? or (user_id_2 = ? and user_id_1 = ?) and subject = ?",
+    let [response] = await db.execute("Select * from chat where ((user_id_1 = ? and user_id_2 = ?) or (user_id_2 = ? and user_id_1 = ?)) and subject = ?",
         [userA, userB, userA, userB, subject]);
 
     if (response.length) {
@@ -43,7 +43,7 @@ const getChatHistory = async (params) => {
     return await db.execute(`Select chat.*, message.*, user.fname, user.lname from chat
      join message on chat.chat_id = message.chat_id 
      join user on message.sender_id = user.user_id
-     where (user_id_1 = ? and user_id_2 = ?) or (user_id_1 = ? and user_id_2 = ?) and subject = ?
+     where ((user_id_1 = ? and user_id_2 = ?) or (user_id_1 = ? and user_id_2 = ?)) and subject = ?
      order by time_sent asc`, [userA, userB, userB, userA, subject]);
 }
 

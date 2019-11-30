@@ -23,6 +23,7 @@ routes.get("/login", accountController.showLoginPage);
 routes.get("/signup", accountController.showLoginPage);
 routes.get("/home", redirectHome, accountController.showHomePage);
 routes.get("/messages", messageController.showMessagesPage);
+routes.get("/messages/:id", messageController.showInitialMessagesPage)
 routes.post("/filter", postController.getPostsByFilter);
 routes.post("/search", postController.showSearchPage);
 

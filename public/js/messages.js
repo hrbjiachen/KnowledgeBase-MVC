@@ -6,8 +6,7 @@ const onChatTile = (id, subject) => {
 
     curUser = id;
     curSubject = subject;
-
-    cleanUpChatbox();
+    console.log(curUser, curSubject);
     pullChatHistory(id, subject).then(data => {
         renderChatbox(data);
     }).catch(error => {
@@ -16,6 +15,7 @@ const onChatTile = (id, subject) => {
 }
 
 const renderChatbox = (messages) => {
+    cleanUpChatbox();
     let chatBox = document.getElementsByClassName("chat-box")[0];
 
     messages.forEach(message => {
@@ -46,8 +46,7 @@ const onSendMessage = (event) => {
 
     // TODO: Toast for empty box
     if (!message) return;
-
-    sendMessage(message, curUser, curSubject).then((data) => {
+    sendMessage(message, curUser, curSubject, false).then((data) => {
         pullChatHistory(curUser, curSubject).then((response) => {
             cleanUpChatbox();
             renderChatbox(response);
@@ -60,7 +59,23 @@ const onSendMessage = (event) => {
     });
 }
 
-const sendMessage = async (message, id, subject) => {
+const onSendInitialMessage = (event, user) => {
+    event.preventDefault();
+
+    let subject = document.getElementById("message-subject").value;
+    let message = document.getElementById("message-content").value;
+
+    if (!subject || !message) return;
+
+    sendMessage(message, user, subject, true).then((data) => {
+        document.getElementById("message-subject").value = "";
+        document.getElementById("message-content").value = "";
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
+const sendMessage = async (message, id, subject, isInitialMessage) => {
     try {
         let url = `${window.location.origin}/message/user/${id}`;
         let response = await fetch(url, {
@@ -68,7 +83,8 @@ const sendMessage = async (message, id, subject) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 "subject": subject,
-                "message": message
+                "message": message,
+                "isInitialMessage": isInitialMessage
             })
         });
 
