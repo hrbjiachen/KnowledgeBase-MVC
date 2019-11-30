@@ -37,7 +37,8 @@ const sendEmailToUser = async (userInfo) => {
 const getChatHistoryById = async (req, res) => {
     const userInfo = req.session.user;
     const { user_id } = userInfo;
-    const [rows] = await Message.getChatHistory({ subject: req.params.subject, user_id, receiverId: req.params.id });
+    const subject = req.params.subject.split("+").join(" ");
+    const [rows] = await Message.getChatHistory({ subject: subject, user_id, receiverId: req.params.id });
     res.json(rows);
 }
 
@@ -50,9 +51,10 @@ const getAllChats = async (req, res) => {
 
 const showMessagesPage = async (req, res) => {
     try {
-        let { user_id } = req.session.user;
+        let userInfo = req.session.user;
+        let { user_id } = userInfo;
         const [rows] = await Message.getAllChats({ ...req.body, user_id });
-        res.render("messages", { homeCSS: true, rows });
+        res.render("messages", { homeCSS: true, messageCSS: true, rows, userInfo });
     } catch (error) {
         res.render("error", { error });
     }
@@ -60,9 +62,10 @@ const showMessagesPage = async (req, res) => {
 
 const showInitialMessagesPage = async (req, res) => {
     try {
+        let userInfo = req.session.user;
         const [rows] = await User.getUserById(req.params.id);
         if (rows.length) {
-            res.render("sendMessage", { homeCSS: true, rows});
+            res.render("sendMessage", { homeCSS: true, messageCSS: true, rows, userInfo });
         }
     } catch (error) {
         res.render("error", { error });

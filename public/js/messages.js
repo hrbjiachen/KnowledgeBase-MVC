@@ -1,8 +1,16 @@
 let curUser = 0;
 let curSubject = "";
+let prevChatTileId = ""; 
 
 const onChatTile = (id, subject) => {
     event.preventDefault();
+    if (prevChatTileId) {
+        let prevElement = document.getElementById(prevChatTileId);
+        prevElement.setAttribute("class", "chat-tile");
+    }
+    let element = document.getElementById(`${id}-${subject}`);
+    element.setAttribute("class", "chat-tile active-chat");
+    prevChatTileId = `${id}-${subject}`;
 
     curUser = id;
     curSubject = subject;
@@ -20,10 +28,16 @@ const renderChatbox = (messages) => {
     messages.forEach(message => {
         let messageSender = document.createElement("h3");
         messageSender.textContent = `${message.fname} ${message.lname}`;
+        messageSender.setAttribute("class", "sender");
 
         let messageContent = document.createElement("p");
         messageContent.textContent = message.message_content;
 
+        let dateObject = document.createElement("p");
+        dateObject.textContent = new Date(message.time_sent).toString();
+        dateObject.setAttribute("class", "date");
+
+        chatBox.appendChild(dateObject);
         chatBox.appendChild(messageSender);
         chatBox.appendChild(messageContent);
 
@@ -44,7 +58,7 @@ const onSendMessage = (event) => {
     let message = document.getElementById("chat-message-form").value;
 
     // TODO: Toast for empty box
-    if (!message) return;
+    if (!message || curUser === 0) return;
     sendMessage(message, curUser, curSubject, false).then((data) => {
         pullChatHistory(curUser, curSubject).then((response) => {
             cleanUpChatbox();
@@ -94,6 +108,10 @@ const sendMessage = async (message, id, subject, isInitialMessage) => {
 }
 
 const pullChatHistory = async (id, subject) => {
+    if (subject.split(" ").length > 1) {
+        subject = subject.split(" ").join("+");
+    }
+    
     try {
         let url = `${window.location.origin}/message/user/${id}/${subject}/history`;
         let response = await fetch(url, {
