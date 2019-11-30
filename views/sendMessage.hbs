@@ -1,15 +1,22 @@
 {{>header}}
 
 <div class="container">
-    <div class="chat-text-box">
-        {{#each rows}}
+    <div class="left_div textcenter">
+
+    </div>
+    <div class="right_div">
+        <div class="chat-box-text">
+            {{#each rows}}
             <img class="circle" src={{this.imgurl}} alt={{this.fname}} {{this.lname}} />
             <form class="chat-form">
                 <input type="text" id="message-subject" placeholder="Subject" required>
-                <input type="text" id="message-content" placeholder="Message" required>
-                <button class="inline" type="submit" id="send-message-btn" onclick="onSendInitialMessage(event, {{this.user_id}})">Send</button>
+                <textarea type="text" id="message-content" placeholder="Message" required></textarea>
+                <button class="inline" type="submit" id="send-message-btn"
+                    onclick="onSendInitialMessage(event, {{this.user_id}})">Send</button>
             </form>
-        {{/each}}
+            {{/each}}
+        </div>
+
     </div>
 </div>
 
