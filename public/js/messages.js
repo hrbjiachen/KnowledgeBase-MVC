@@ -108,6 +108,10 @@ const sendMessage = async (message, id, subject, isInitialMessage) => {
 }
 
 const pullChatHistory = async (id, subject) => {
+    if (subject.split(" ").length > 1) {
+        subject = subject.split(" ").join("+");
+    }
+    
     try {
         let url = `${window.location.origin}/message/user/${id}/${subject}/history`;
         let response = await fetch(url, {
