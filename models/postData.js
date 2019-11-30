@@ -9,11 +9,13 @@ const add = async data => {
   );
 };
 
-const getAll = async () => await db.execute("Select * from post");
+const getAllMyPosts = async user_id => 
+  await db.execute("SELECT COUNT(reply.reply_id) AS replies_count,DATE_FORMAT(post.date_created,'%b,%d %Y') AS date_formated,post.*,user.fname,user.lname,user.imgurl " + 
+  "FROM post INNER JOIN user ON post.user_id = user.user_id LEFT JOIN reply ON reply.post_id = post.post_id WHERE post.user_id = ? GROUP BY post.post_id ORDER BY `date_created` DESC LIMIT 2", [user_id]);
 
 const getLatest = async () => 
   await db.execute("SELECT COUNT(reply.reply_id) AS replies_count,DATE_FORMAT(post.date_created,'%b,%d %Y') AS date_formated,post.*,user.fname,user.lname,user.imgurl " + 
-  "FROM post INNER JOIN user ON post.user_id = user.user_id LEFT JOIN reply ON reply.post_id = post.post_id GROUP BY post.post_id ORDER BY `date_created` DESC LIMIT 2");
+  "FROM post INNER JOIN user ON post.user_id = user.user_id LEFT JOIN reply ON reply.post_id = post.post_id GROUP BY post.post_id ORDER BY `date_created` DESC LIMIT 5");
 
 
 const getPostById = async id =>
@@ -44,7 +46,7 @@ const getRepliesByPostId = async post_id =>
 
 module.exports = {
   add,
-  getAll,
+  getAllMyPosts,
   getLatest,
   getPostById,
   getPostsByKey,

@@ -1,5 +1,6 @@
 const postData = require("../models/postData");
 const rm = require("../util/responseMsg");
+const postProcessing = require("../util/postProcessing");
 
 const addPost = async (req, res) => {
   try {
@@ -14,9 +15,12 @@ const addPost = async (req, res) => {
   }
 };
 
-const getAllPost = async (req, res) => {
-  const [rows] = await postData.getAll();
-  res.json(rows);
+const getAllMyPosts = async (req, res) => {
+  const userInfo = req.session.user;
+  const user_id = userInfo.user_id;
+  const [allMyPosts] = await postData.getAllMyPosts(user_id);
+  postProcessing(allMyPosts);
+  res.render('myPosts', {userInfo, allMyPosts, homeCSS: true, postCSS: true });
 };
 
 const getLatestPost = async (req, res) => {
@@ -68,7 +72,7 @@ const replyPostById = async (req, res) => {
 
 module.exports = {
   addPost,
-  getAllPost,
+  getAllMyPosts,
   getLatestPost,
   getPostById,
   getPostByUser,
