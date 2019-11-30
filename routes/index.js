@@ -24,12 +24,9 @@ routes.get("/login", accountController.showLoginPage);
 routes.get("/signup", accountController.showLoginPage);
 routes.get("/home", redirectHome, accountController.showHomePage);
 routes.get("/messages", messageController.showMessagesPage);
-<<<<<<< HEAD
 routes.get("/profile/:id", profileController.showProfilePage);
-=======
 routes.post("/filter", postController.getPostsByFilter);
 routes.post("/search", postController.showSearchPage);
->>>>>>> a464a3d8ccf9b06163116672874c9f1ab0ff393c
 
 //account route
 routes.post("/signup", accountController.continueSignup);
