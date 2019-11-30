@@ -17,6 +17,27 @@ const showLoginPage = (req, res) => {
 const showHomePage = async (req, res) => {
   const userInfo = req.session.user;
   const [latestPost] = await postData.getLatest();
+
+  // Process details
+  for (let index = 0; index < latestPost.length; index++) {
+    const post = latestPost[index];
+
+    // Omit long text
+    const threshold = 130;
+    if(post["detail"].length > threshold+3){
+      post["detail"] = post["detail"].substr(0,threshold) + '...';
+    }
+
+    // Reply
+    if(post["replies_count"] == 0){
+      post["replies_count"] =  'Reply';
+    }else if (post["replies_count"] == 1){
+      post["replies_count"] = post["replies_count"] + ' reply';
+    }else{
+      post["replies_count"] = post["replies_count"] + ' replies';
+    }
+
+  }
   res.render("home", { userInfo, latestPost, homeCSS: true, postCSS: true });
 };
 
