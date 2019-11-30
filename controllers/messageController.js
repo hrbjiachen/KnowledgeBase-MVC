@@ -52,7 +52,7 @@ const showMessagesPage = async (req, res) => {
     try {
         let { user_id } = req.session.user;
         const [rows] = await Message.getAllChats({ ...req.body, user_id });
-        res.render("messages", { homeCSS: true, rows });
+        res.render("messages", { homeCSS: true, messageCSS: true, rows });
     } catch (error) {
         res.render("error", { error });
     }
@@ -62,7 +62,7 @@ const showInitialMessagesPage = async (req, res) => {
     try {
         const [rows] = await User.getUserById(req.params.id);
         if (rows.length) {
-            res.render("sendMessage", { homeCSS: true, rows});
+            res.render("sendMessage", { homeCSS: true, messageCSS: true, rows});
         }
     } catch (error) {
         res.render("error", { error });

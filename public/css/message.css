@@ -1,0 +1,60 @@
+.chat-tiles {
+    display: grid;
+}
+
+.avatar-thumbnail {
+    float: left;
+}
+
+.chat-tile {
+    padding: 20px;
+}
+
+hr {
+    width: 100%;
+    opacity: 50%;
+}
+
+.active-chat {
+    background-color: white;
+}
+
+.circle {
+    width: 75px;
+}
+
+.chat-name{
+    font-size: large;
+    float: left;
+    width: 40%;
+    margin-bottom: 0;
+}
+
+.chat-subject {
+    float: left;
+    width: 40%;
+}
+
+.chat-header {
+    display: grid;
+}
+
+.right_div {
+    position: relative;
+}
+.chat-text-box {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+#chat-message-form {
+    width: 96%;
+}
+
+.date {
+    opacity: 70%;
+    font-size: small;
+    margin: auto;
+    width: 30%;
+}
