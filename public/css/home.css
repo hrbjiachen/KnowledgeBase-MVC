@@ -126,6 +126,25 @@ button#submitPostBtn:hover {
   background-color: #0b7dda;
 }
 
+.pagingButton{
+  width: 120px;
+  color: #0b7dda;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.pagingButton:hover {
+  color: #2196f3;
+}
+
+#lastPageButton{
+  float: left;
+}
+
+#nextPageButton{
+  float: right;
+}
+
 #snackbar {
   visibility: hidden;
   min-width: 250px;
