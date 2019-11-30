@@ -19,23 +19,29 @@
         <div class='right_div'>
             <table class="link">
                 <tr>
-                    <td width="100px"><a href="/messages">MESSAGE Button</a></td>
+                    <button class="inline" onclick="logout()">Message</button>
+                    {{!-- <a width="100px"><a class='inline' href="/messages">MESSAGE Button</a></a> --}}
                 </tr>
                 <tr>
-                    <td width="100px"><a href="/">Posts</a></td>
                     <td>3</td>
+                    <td width="100px"><p>Posts</p></td>
+
                 </tr>
 
                 <tr>
-                    <td width="100px"><a href="/">Likes</a></td>
                     <td>10</td>
+                    <td width="100px"><p>Likes</p></td>
                 </tr>
             </table>
          </div>
     </div>
     <div class='bottom_div'>
+
         <div class='center_div'>
-            <div id="latest-post-div" >
+        <div class'top_div'>
+            <h1>All Post By {{profileInfo.fname}}</h1>
+        </div>
+            <div id="post-div" >
                 {{#each profilePost}}
                     <div class="post-block">
                         <img class="circle" src="{{../profileInfo.imgurl}}" alt="avatar" />
