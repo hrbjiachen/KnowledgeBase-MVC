@@ -46,14 +46,12 @@ const getPostByUser = async (req, res) => {
 const showSearchPage = async (req, res) => {
   const key = req.body.search_keyword;
   const [searchedPosts] = await postData.getPostsByKey(key);
-  console.log(searchedPosts)
   res.render("search", { searchedPosts: searchedPosts, homeCSS: true, postCSS: true});
 };
 
 const getPostsByFilter = async (req, res) => {
   const key = req.body.search_keyword;
   const [searchedPosts] = await postData.getPostsByFilter(key);
-  console.log(searchedPosts)
   res.render("search", { searchedPosts: searchedPosts, homeCSS: true, postCSS: true});
 }
 
