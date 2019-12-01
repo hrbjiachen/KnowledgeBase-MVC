@@ -1,0 +1,63 @@
+<div class="header">
+    <div class="logo">k<span class="blue">b</span></div>
+    <form class="inline" method="post" action="post/search">
+        <input id="searchBar" type="text" placeholder="Search.." name="search_keyword">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <button class="inline" onclick="logout()">Logout</button>
+</div>
+
+<div class="container">
+
+    <div class="top_div">
+        <div class='left_div'>
+            <img class="circle" src="{{profileInfo.imgurl}}" alt="avatar" />
+            <h2>{{profileInfo.fname}} {{profileInfo.lname}}</h2>
+            <h4>{{profileInfo.description}}</h4>
+            <p class="grey">{{profileInfo.country}}</p>
+        </div>
+        <div class='right_div'>
+            <table class="link">
+                <tr>
+                    <button class="inline" onclick="messages({{profileInfo.user_id}})">Message</button>
+                    {{!-- <a width="100px"><a class='inline' href="/messages">MESSAGE Button</a></a> --}}
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td width="100px"><p>Posts</p></td>
+
+                </tr>
+
+                <tr>
+                    <td>10</td>
+                    <td width="100px"><p>Likes</p></td>
+                </tr>
+            </table>
+         </div>
+    </div>
+    <div class='bottom_div'>
+
+        <div class='center_div'>
+        <div class'top_div'>
+            <h1>All Post By {{profileInfo.fname}}</h1>
+        </div>
+            <div id="post-div" >
+                {{#each profilePost}}
+                    <div class="post-block">
+                        <img class="circle" src="{{../profileInfo.imgurl}}" alt="avatar" />
+                        <div class="post-text-block">
+                            <div class="post-title grey">{{ this.subject }}<span class="topic">{{ this.topic }}</span></div>
+                            <div class="post-detail grey">{{ this.detail }}</div>
+                            <div class="post-date grey">{{ this.date_created }}</div>
+                            <a class="post-replies-btn grey" href="/post/{{ this.post_id }}" >replies</a>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="snackbar"></div>
+<script src="/js/home.js" defer></script>
+<script src="/js/profile.js" defer></script>
