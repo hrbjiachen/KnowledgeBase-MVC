@@ -1,11 +1,4 @@
-<div class="header">
-    <div class="logo">k<span class="blue">b</span></div>
-    <form class="inline" method="post" action="post/search">
-        <input id="searchBar" type="text" placeholder="Search.." name="search_keyword">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-    <button class="inline" onclick="logout()">Logout</button>
-</div>
+{{>header}}
 
 <div class="container">
 
@@ -43,15 +36,7 @@
         </div>
             <div id="post-div" >
                 {{#each profilePost}}
-                    <div class="post-block">
-                        <img class="circle" src="{{../profileInfo.imgurl}}" alt="avatar" />
-                        <div class="post-text-block">
-                            <div class="post-title grey">{{ this.subject }}<span class="topic">{{ this.topic }}</span></div>
-                            <div class="post-detail grey">{{ this.detail }}</div>
-                            <div class="post-date grey">{{ this.date_created }}</div>
-                            <a class="post-replies-btn grey" href="/post/{{ this.post_id }}" >replies</a>
-                        </div>
-                    </div>
+                    {{>eachPost}}
                 {{/each}}
             </div>
         </div>

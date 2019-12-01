@@ -1,12 +1,14 @@
 const userData = require("../models/userData");
 const postData = require("../models/postData");
 const rm = require("../util/responseMsg");
+const postProcessing = require("../util/postProcessing");
 
 const showProfilePage = async (req, res) => {
   try {
     const [rows] = await userData.getUserById(req.params.id);
     if (rows.length) {
       const [profilePost] = await postData.getPostsByUserId(req.params.id);
+      postProcessing(profilePost);
       const profileInfo = { ...rows[0] };
       delete profileInfo["password"];
       userInfo = req.session.info;

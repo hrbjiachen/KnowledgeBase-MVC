@@ -4,11 +4,11 @@
 <div class="container">
     <div class="right_div">
         <div class="post-block">
-            <img class="circle" src="{{postReply.imgurl}}" alt="avatar" />
+            <img class="circle" src="{{post.imgurl}}" alt="avatar" />
             <div class="post-text-block">
-                <div id="post-id" hidden="True">{{postReply.post_id}}</div>
-                <div class="post-title grey">{{ postReply.subject }}<span class="post-topic">{{ postReply.topic }}</span></div>
-                <div class="post-detail grey">{{ postReply.detail }}</div>
+                <div id="post-id" hidden="True">{{post.post_id}}</div>
+                <div class="post-title grey">{{ post.subject }}<span class="post-topic">{{ post.topic }}</span></div>
+                <div class="post-detail grey">{{ post.detail }}</div>
                 <div class="post-date grey">{{ this.date_formated }}</div>
             </div>
         </div>

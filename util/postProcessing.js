@@ -3,10 +3,16 @@ function postProcessing(posts) {
   for (let index = 0; index < posts.length; index++) {
     const post = posts[index];
 
-    // Omit long text
-    const threshold = 130;
-    if (post["detail"].length > threshold + 3) {
-      post["detail"] = post["detail"].substr(0, threshold) + '...';
+    // Omit long subject
+    const thresholdSubject = 35;
+    if (post["subject"].length > thresholdSubject + 3) {
+      post["subject"] = post["subject"].substr(0, thresholdSubject) + '...';
+    }
+
+    // Omit long post detail
+    const thresholdDetail = 130;
+    if (post["detail"].length > thresholdDetail + 3) {
+      post["detail"] = post["detail"].substr(0, thresholdDetail) + '...';
     }
     // Reply
     if (post["replies_count"] == 0) {
