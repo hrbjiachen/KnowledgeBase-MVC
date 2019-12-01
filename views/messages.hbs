@@ -1,27 +1,27 @@
-<div class="header">
-    <div class="logo">k<span class="blue">b</span></div>
-    <button class="inline" onclick="logout()">Logout</button>
-</div>
-
+{{>header}}
 
 <div class="container">
-    <div class="left_div textcenter">
+    <div class="left_div textcenter chat-tiles">
         {{#each rows}}
-            <button class="chat-tile", onclick="onChatTile({{this.user_id}}, '{{this.subject}}')", id="{{this.user_id}}">
-                <img class="avatar-thumbnail" src="{{this.imgurl}}" alt="avatar" />
-                <h4 class="chat-name">{{this.fname}} {{this.lname}}</h4>
-                <h4 class="chat-subject">{{this.subject}}</h4>
-            </button>
+        <div class="chat-tile" onclick="onChatTile({{this.user_id}}, '{{this.subject}}')"
+            id="{{this.user_id}}-{{this.subject}}">
+            <img class="avatar-thumbnail circle" src="{{this.imgurl}}" alt="avatar" />
+            <div class="chat-header">
+                <p class="chat-name">{{this.fname}} {{this.lname}}</p>
+                <p class="chat-subject">{{this.subject}}</p>
+            </div>
+        </div>
+        <hr>
         {{/each}}
     </div>
     <div class="right_div">
         <div class="chat-box">
-            
+
         </div>
         <div class="chat-text-box">
             <form class="chat-form">
                 <input type="text" id="chat-message-form" placeholder="Write a message...">
-                <button type="submit" id="send-message-btn" onclick="onSendMessage(event)">Send</button>
+                <button class="inline" type="submit" id="send-message-btn" onclick="onSendMessage(event)">Send</button>
             </form>
         </div>
     </div>
