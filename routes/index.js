@@ -25,6 +25,7 @@ routes.get("/signup", accountController.showLoginPage);
 routes.get("/home", redirectHome, accountController.showHomePage);
 routes.get("/messages", messageController.showMessagesPage);
 routes.get("/profile/:id", profileController.showProfilePage);
+routes.get("/messages/:id", messageController.showInitialMessagesPage)
 routes.post("/filter", postController.getPostsByFilter);
 routes.post("/search", postController.showSearchPage);
 
@@ -42,7 +43,7 @@ userRoute.get("/all", userController.getAllUser);
 routes.use("/post", postRoute);
 postRoute.post("/add", postController.addPost);
 postRoute.post("/reply", postController.replyPostById);
-postRoute.get("/all", postController.getAllPost);
+postRoute.get("/all", postController.getAllMyPosts);
 postRoute.get("/:id", postController.getPostById);
 postRoute.get("/user/:id", postController.getPostByUser);
 

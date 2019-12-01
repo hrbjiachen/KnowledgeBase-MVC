@@ -1,6 +1,5 @@
 .post-block{
     margin: 20px;
-    width: 400px;
     display: -webkit-box;
 }
 
@@ -10,6 +9,8 @@
 
 .post-text-block{
     margin: 10px;
+    width:400px;
+    height: 120px;
 }
 
 .post-title{
@@ -24,8 +25,10 @@
 }
 
 .post-detail{
+    margin: 5px;
     padding-left: 20px;
     font-size: 1em;
+    min-height: 3em;
 }
 
 .post-date{

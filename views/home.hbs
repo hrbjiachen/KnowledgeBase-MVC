@@ -8,7 +8,7 @@
 
         <table class="link">
             <tr>
-                <td width="100px"><a href="/">Posts</a></td>
+                <td width="100px"><a href="/post/all">Posts</a></td>
                 <td>3</td>
             </tr>
             <tr>
@@ -54,19 +54,11 @@
 
         <div id="latest-post-div" >
             {{#each latestPost}}
-                <div class="post-block">
-                    <img class="circle" src="{{this.imgurl}}" alt="avatar" />
-                    <div class="post-text-block">
-                        <div class="post-title grey">{{ this.subject }}<span class="post-topic">{{ this.topic }}</span></div>
-                        <div class="post-detail grey">{{ this.detail }}</div>
-                        <div class="post-date grey">{{ this.date_formated }}</div>
-                        <a class="post-replies-btn grey" href="/post/{{ this.post_id }}" >{{this.replies_count}} replies</a>
-                    </div>
-                </div>
+                {{>eachPost}}
             {{/each}}
         </div>
-
-
+        <div class="pagingButton" id="lastPageButton" onclick="postsPaging(-1)">Last Page</div>
+        <div class="pagingButton" id="nextPageButton" onclick="postsPaging(1)">Next Page</div>
     </div>
 </div>
 
