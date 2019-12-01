@@ -1,4 +1,5 @@
 const postData = require("../models/postData");
+const messageData = require("../models/messageData");
 const rm = require("../util/responseMsg");
 const postProcessing = require("../util/postProcessing");
 
@@ -18,9 +19,14 @@ const addPost = async (req, res) => {
 const getAllMyPosts = async (req, res) => {
   const userInfo = req.session.user;
   const user_id = userInfo.user_id;
-  const [allMyPosts] = await postData.getAllMyPosts(user_id);
-  postProcessing(allMyPosts);
-  res.render('myPosts', {userInfo, allMyPosts, homeCSS: true, postCSS: true });
+  const [allMyPosts] = await postData.getPostsByUserId(user_id);
+  const [myPost] = await postData.getPostsByUserId(user_id);
+  const [myChat] = await messageData.getAllChats(userInfo);
+
+  const numOfPost = myPost.length;
+  const numOfChat = myChat.length;
+  // postProcessing(allMyPosts);/
+  res.render('myPosts', {userInfo, allMyPosts,numOfPost,numOfChat,homeCSS: true, postCSS: true });
 };
 
 const getLatestPost = async (req, res) => {
@@ -30,10 +36,10 @@ const getLatestPost = async (req, res) => {
 
 const getPostById = async (req, res) => {
   const post_id = req.params.id;
-  const [post] = await postData.getPostById(post_id);
+  const [row] = await postData.getPostById(post_id);
   const [replies] = await postData.getRepliesByPostId(post_id);
-  const postReply = post[0];
-  res.render('post', {postReply, replies, homeCSS: true, postCSS: true });
+  const post = row[0];
+  res.render('post', {post, replies, homeCSS: true, postCSS: true });
 
 };
 

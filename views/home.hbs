@@ -2,21 +2,21 @@
 
 <div class="container">
     <div class="left_div textcenter">
-        <img class="circle" src="{{userInfo.imgurl}}" alt="avatar" />
+        <a href="/profile/{{ userInfo.user_id }}" ><img class="circle" src="{{userInfo.imgurl}}" alt="avatar" /></a>
         <h2>{{userInfo.fname}} {{userInfo.lname}}</h2>
         <p class="grey">{{userInfo.description}}</p>
 
         <table class="link">
             <tr>
                 <td width="100px"><a href="/post/all">Posts</a></td>
-                <td>3</td>
+                <td>{{numOfPost}}</td>
             </tr>
             <tr>
                 <td width="100px"><a href="/messages">Messages</a></td>
-                <td>5</td>
+                <td>{{numOfChat}}</td>
             </tr>
             <tr>
-                <td width="100px"><a href="/">Likes</a></td>
+                <td width="100px">Likes</td>
                 <td>10</td>
             </tr>
         </table>
@@ -42,19 +42,19 @@
         <p>Search by topic</p>
         <form class="inline" method="post" action="/filter">
             <select id="filter" name="search_keyword">
-              <option value="">Topic</option>
-              <option value="php">php</option>
-              <option value="nodejs">nodejs</option>
-              <option value="java">java</option>
-              <option value="sql">sql</option>
-              <option value="zend">zend</option>
+                <option value="">Topic</option>
+                <option value="php">php</option>
+                <option value="nodejs">nodejs</option>
+                <option value="java">java</option>
+                <option value="sql">sql</option>
+                <option value="zend">zend</option>
             </select>
             <button type="submit" id="submitFilterBtn">Go</button>
         </form>
 
-        <div id="latest-post-div" >
+        <div id="latest-post-div">
             {{#each latestPost}}
-                {{>eachPost}}
+            {{>eachPost}}
             {{/each}}
         </div>
         <div class="pagingButton" id="lastPageButton" onclick="postsPaging(-1)">Last Page</div>
