@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="left_div textcenter">
-        <img class="circle" src="{{userInfo.imgurl}}" alt="avatar" />
+        <a href="/profile/{{ userInfo.user_id }}" ><img class="circle" src="{{userInfo.imgurl}}" alt="avatar" /></a>
         <h2>{{userInfo.fname}} {{userInfo.lname}}</h2>
         <p class="grey">{{userInfo.description}}</p>
 

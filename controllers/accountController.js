@@ -19,7 +19,7 @@ const showLoginPage = (req, res) => {
 const showHomePage = async (req, res) => {
   const userInfo = req.session.user;
   const [latestPost] = await postData.getLatest();
-  const [myPost] = await postData.getAllMyPosts(userInfo.user_id);
+  const [myPost] = await postData.getPostsByUserId(userInfo.user_id);
   const [myChat] = await messageData.getAllChats(userInfo);
 
   const numOfPost = myPost.length;
