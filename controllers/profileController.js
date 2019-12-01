@@ -36,7 +36,7 @@ const editProfilePage = async (req, res) => {
     try {
         const userInfo = req.session.user;
         console.log(userInfo);
-        res.render("edit", { userInfo, homeCSS: true, messageCSS: true, editCSS: true });
+        res.render("edit", { userInfo, homeCSS: true, editCSS: true });
       } catch (error) {
         res.render("error", { error });
       }
