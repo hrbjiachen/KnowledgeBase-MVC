@@ -11,7 +11,7 @@ const showProfilePage = async (req, res) => {
             const profileInfo = { ...rows[0] };
             delete profileInfo["password"];
             userInfo = req.session.info;
-            console.log(profilePost);
+            console.log(profileInfo);
             res.render("profile", { userInfo , profileInfo, profilePost, profileCSS: true, postCSS: true });
         } else {
             res.render("error", { error });

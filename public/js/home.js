@@ -6,6 +6,7 @@ const logout = async () => {
   window.location = window.location.origin;
 };
 
+
 const submitPost = async () => {
   const subject = document.getElementById("subject").value;
   const detail = document.getElementById("detail").value;
