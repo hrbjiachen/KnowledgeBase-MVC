@@ -17,6 +17,7 @@ const showLoginPage = (req, res) => {
 
 const showHomePage = async (req, res) => {
   const userInfo = req.session.user;
+  console.log(req.session.user);
   const [latestPost] = await postData.getLatest();
   postProcessing(latestPost)
   res.render("home", { userInfo, latestPost, homeCSS: true, postCSS: true });

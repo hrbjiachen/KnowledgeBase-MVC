@@ -20,17 +20,17 @@
             <table class="link">
                 <tr>
                     <button class="inline" onclick="messages({{profileInfo.user_id}})">Message</button>
-                    {{!-- <a width="100px"><a class='inline' href="/messages">MESSAGE Button</a></a> --}}
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td width="100px"><p>Posts</p></td>
+                    <td><p>Posts</p></td>
 
                 </tr>
 
                 <tr>
-                    <td>10</td>
-                    <td width="100px"><p>Likes</p></td>
+                    <td><p id='likes'>{{profileInfo.likes}}</p></td>
+                    <td><p>Likes</p></td>
+                    <td><button class="like" onclick="like({{profileInfo.user_id}},{{profileInfo.likes}})">+</button></td>
                 </tr>
             </table>
          </div>

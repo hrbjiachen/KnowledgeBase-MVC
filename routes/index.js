@@ -8,6 +8,7 @@ const messageController = require("../controllers/messageController");
 const routes = express.Router();
 const postRoute = express.Router();
 const userRoute = express.Router();
+const editRoute = express.Router();
 const messageRoute = express.Router();
 
 const redirectHome = (req, res, next) => {
@@ -54,5 +55,11 @@ messageRoute.post("/user/:id", messageController.sendMessageById);
 messageRoute.get("/user/:id/:subject/history", messageController.getChatHistoryById);
 messageRoute.get("/all", messageController.getAllChats);
 
+//edit rout
+
+routes.use("/edit", editRoute);
+editRoute.get("/profile", profileController.editProfilePage);
+editRoute.post("/:col", profileController.editProfileInfo);
+editRoute.post("/likes/add", profileController.addLike);
 
 module.exports = routes;

@@ -39,10 +39,23 @@ const getUser = async info => {
 const getUserByEmail = async email =>
   await db.execute("Select * from user where email = ?", [email]);
 
+
+const updateUserColumn = async (col,editItem, id) => {
+  let query = "Update user set " + col + " = ? WHERE user_id = ?";
+  await db.execute(query, [editItem, id] )
+};
+
+  const getLikes = async (id) => {
+    return await db.execute("Select likes from user where user_id = ?", [id] )
+};
+  
+
 module.exports = {
   add,
   getAll,
   getUserById,
   getUser,
-  getUserByEmail
+  getUserByEmail,
+  updateUserColumn,
+  getLikes
 };
