@@ -30,10 +30,10 @@ const getLatestPost = async (req, res) => {
 
 const getPostById = async (req, res) => {
   const post_id = req.params.id;
-  const [post] = await postData.getPostById(post_id);
+  const [row] = await postData.getPostById(post_id);
   const [replies] = await postData.getRepliesByPostId(post_id);
-  const postReply = post[0];
-  res.render('post', {postReply, replies, homeCSS: true, postCSS: true });
+  const post = row[0];
+  res.render('post', {post, replies, homeCSS: true, postCSS: true });
 
 };
 

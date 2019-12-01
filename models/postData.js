@@ -20,7 +20,7 @@ const getLatest = async () =>
 
 const getPostById = async id =>
   await db.execute("SELECT post.*,user.fname,user.lname,user.imgurl,DATE_FORMAT(post.date_created,'%b,%d %Y') AS date_formated " +
-    "FROM post,user WHERE post_id = ?", [id]);
+    "FROM post INNER JOIN user ON post.user_id = user.user_id WHERE post_id = ?", [id]);
 
 const getPostsByUserId = async user_id =>
   await db.execute("Select * from post where user_id = ?", [user_id]);
