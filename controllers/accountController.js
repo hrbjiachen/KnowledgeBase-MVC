@@ -1,5 +1,6 @@
 const userData = require("../models/userData");
 const postData = require("../models/postData");
+const messageData = require("../models/messageData");
 const rm = require("../util/responseMsg");
 const postProcessing = require("../util/postProcessing");
 
@@ -18,8 +19,20 @@ const showLoginPage = (req, res) => {
 const showHomePage = async (req, res) => {
   const userInfo = req.session.user;
   const [latestPost] = await postData.getLatest();
-  postProcessing(latestPost)
-  res.render("home", { userInfo, latestPost, homeCSS: true, postCSS: true });
+  const [myPost] = await postData.getAllMyPosts(userInfo.user_id);
+  const [myChat] = await messageData.getAllChats(userInfo);
+
+  const numOfPost = myPost.length;
+  const numOfChat = myChat.length;
+  postProcessing(latestPost);
+  res.render("home", {
+    userInfo,
+    latestPost,
+    numOfPost,
+    numOfChat,
+    homeCSS: true,
+    postCSS: true
+  });
 };
 
 const continueSignup = async (req, res) => {
