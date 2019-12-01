@@ -18,6 +18,7 @@ DB_PASSWORD=password
 HOST=localhost
 DB_USER=root
 DB_NAME=knowledgebase
+SENDGRID_API_KEY='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'
 
 ```
 
