@@ -66,12 +66,16 @@ const renderMessage = (message, avatar, messageDate) => {
   const msgDiv = document.createElement("div");
   msgDiv.setAttribute("class", "chat-content-div");
   const { sender_id, fname, lname } = message;
+
   let messageAvatar = document.createElement("img");
   const sender = avatar.find(user => user.user_id == sender_id);
-
   messageAvatar.setAttribute("class", "avatar-thumbnail circle");
   messageAvatar.src = sender ? sender.imgurl : "";
   messageAvatar.alt = "User Avatar";
+
+  let aTag = document.createElement("a");
+  aTag.href = `/profile/${sender.user_id}`;
+  aTag.appendChild(messageAvatar);
 
   let contentDiv = document.createElement("div");
   contentDiv.setAttribute("class", "chat-header");
@@ -90,7 +94,7 @@ const renderMessage = (message, avatar, messageDate) => {
   contentDiv.appendChild(messageSender);
   contentDiv.appendChild(messageContent);
 
-  msgDiv.appendChild(messageAvatar);
+  msgDiv.appendChild(aTag);
   msgDiv.appendChild(contentDiv);
 
   return msgDiv;
