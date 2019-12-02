@@ -14,10 +14,13 @@ PORT=80
 NODE_ENV=development
 SESS_SECRET=comp4711-jjia
 SESS_NAME=sid
-DB_PASSWORD=password
+DB_PASSWORD='Kn0wl3dg3B4s3'
 HOST=localhost
 DB_USER=root
 DB_NAME=knowledgebase
+SENDGRID_API_KEY='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'
+CLOUD_SQL_CONNECTION_NAME='house-price-predictor-257616:us-west1:knowledgebase'
+
 
 ```
 
