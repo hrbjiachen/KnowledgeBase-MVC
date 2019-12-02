@@ -19,7 +19,7 @@ HOST=localhost
 DB_USER=root
 DB_NAME=knowledgebase
 SENDGRID_API_KEY='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'
-CLOUD_SQL_CONNECTION_NAME='house-price-predictor-257616:us-west1:knowledgebase'
+CLOUD_SQL_CONNECTION_NAME='knawledgebase:us-west2:knowledgebase'
 
 
 ```
