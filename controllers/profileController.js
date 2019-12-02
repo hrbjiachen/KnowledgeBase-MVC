@@ -9,12 +9,14 @@ const showProfilePage = async (req, res) => {
     if (rows.length) {
       const [profilePost] = await postData.getPostsByUserId(req.params.id);
       postProcessing(profilePost);
+      const numOfPost = profilePost.length;
       const profileInfo = { ...rows[0] };
       delete profileInfo["password"];
       userInfo = req.session.info;
       res.render("profile", {
         userInfo,
         profileInfo,
+        numOfPost,
         profilePost,
         profileCSS: true,
         postCSS: true
