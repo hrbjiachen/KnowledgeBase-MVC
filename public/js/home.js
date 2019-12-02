@@ -96,7 +96,6 @@ const postsPaging = increment => {
     const post = latestPosts[index];
     post.style.display = "";
   }
-
 }
 
 const showToastMessage = msg => {
