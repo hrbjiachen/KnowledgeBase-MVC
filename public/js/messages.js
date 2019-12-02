@@ -107,8 +107,6 @@ const formatAMPM = date => {
   return strTime;
 };
 
-console.log(formatAMPM(new Date()));
-
 const cleanUpChatbox = () => {
   let chatBox = document.getElementsByClassName("chat-box")[0];
 
@@ -127,9 +125,9 @@ const onSendMessage = event => {
   sendMessage(message, curUser, curSubject, false)
     .then(data => {
       pullChatHistory(curUser, curSubject)
-        .then(response => {
+        .then(({ rows, avatar }) => {
           cleanUpChatbox();
-          renderChatbox(response);
+          renderChatbox(rows, avatar);
         })
         .catch(error => {
           console.error(error);
