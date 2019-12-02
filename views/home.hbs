@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="left_div textcenter">
-        <a href="/profile/{{ userInfo.user_id }}" ><img class="circle" src="{{userInfo.imgurl}}" alt="avatar" /></a>
+        <a href="/profile/{{ userInfo.user_id }}"><img class="circle" src="{{userInfo.imgurl}}" alt="avatar" /></a>
         <h2>{{userInfo.fname}} {{userInfo.lname}}</h2>
         <p class="grey">{{userInfo.description}}</p>
 
@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <td width="100px">Likes</td>
-                <td>10</td>
+                <td>{{userInfo.likes}}</td>
             </tr>
         </table>
 
@@ -57,8 +57,10 @@
             {{>eachPost}}
             {{/each}}
         </div>
-        <div class="pagingButton" id="lastPageButton" onclick="postsPaging(-1)">Last Page</div>
-        <div class="pagingButton" id="nextPageButton" onclick="postsPaging(1)">Next Page</div>
+        <div id="pageDiv">
+            <div class="pagingButton" id="lastPageButton" onclick="postsPaging(-1)">Last Page</div>
+            <div class="pagingButton" id="nextPageButton" onclick="postsPaging(1)">Next Page</div>
+        </div>
     </div>
 </div>
 

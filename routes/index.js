@@ -24,9 +24,13 @@ routes.get("/", accountController.showPage);
 routes.get("/login", accountController.showLoginPage);
 routes.get("/signup", accountController.showLoginPage);
 routes.get("/home", redirectHome, accountController.showHomePage);
-routes.get("/messages", messageController.showMessagesPage);
-routes.get("/profile/:id", profileController.showProfilePage);
-routes.get("/messages/:id", messageController.showInitialMessagesPage)
+routes.get("/messages", redirectHome, messageController.showMessagesPage);
+routes.get("/profile/:id", redirectHome, profileController.showProfilePage);
+routes.get(
+  "/messages/:id",
+  redirectHome,
+  messageController.showInitialMessagesPage
+);
 routes.post("/filter", postController.getPostsByFilter);
 routes.post("/search", postController.showSearchPage);
 
@@ -38,27 +42,30 @@ routes.post("/logout", accountController.logout);
 
 //user route
 routes.use("/user", userRoute);
-userRoute.get("/all", userController.getAllUser);
+userRoute.get("/all", redirectHome, userController.getAllUser);
 
 //post route
 routes.use("/post", postRoute);
 postRoute.post("/add", postController.addPost);
 postRoute.post("/reply", postController.replyPostById);
-postRoute.get("/all", postController.getAllMyPosts);
-postRoute.get("/:id", postController.getPostById);
-postRoute.get("/user/:id", postController.getPostByUser);
-
+postRoute.get("/all", redirectHome, postController.getAllMyPosts);
+postRoute.get("/:id", redirectHome, postController.getPostById);
+postRoute.get("/user/:id", redirectHome, postController.getPostByUser);
 
 //message route
 routes.use("/message", messageRoute);
 messageRoute.post("/user/:id", messageController.sendMessageById);
-messageRoute.get("/user/:id/:subject/history", messageController.getChatHistoryById);
-messageRoute.get("/all", messageController.getAllChats);
+messageRoute.get(
+  "/user/:id/:subject/history",
+  redirectHome,
+  messageController.getChatHistoryById
+);
+messageRoute.get("/all", redirectHome, messageController.getAllChats);
 
 //edit rout
 
 routes.use("/edit", editRoute);
-editRoute.get("/profile", profileController.editProfilePage);
+editRoute.get("/profile", redirectHome, profileController.editProfilePage);
 editRoute.post("/:col", profileController.editProfileInfo);
 editRoute.post("/likes/add", profileController.addLike);
 

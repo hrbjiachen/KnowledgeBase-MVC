@@ -1,65 +1,99 @@
 .chat-tiles {
-    display: grid;
+  display: grid;
 }
 
 .avatar-thumbnail {
-    float: left;
+  float: left;
 }
 
 .chat-tile {
-    padding: 20px;
-}
-
-hr {
-    width: 100%;
-    opacity: 50%;
+  padding: 10px;
+  height: 80px;
+  border: 1px solid #bbdefb;
 }
 
 .active-chat {
-    background-color: white;
+  background-color: #bbdefb;
 }
 
 .circle {
-    width: 75px;
+  width: 75px;
 }
 
-.chat-name{
-    font-size: large;
-    float: left;
-    width: 40%;
-    margin-bottom: 0;
+.chat-name {
+  font-size: large;
+  font-weight: bold;
 }
 
+.chat-name,
 .chat-subject {
-    float: left;
-    width: 40%;
+  float: left;
+  text-align: left;
+  margin: 10px;
 }
 
 .chat-header {
-    display: grid;
+  display: grid;
+  float: left;
+  margin-left: 5px;
+}
+
+.chat-header span {
+  font-weight: lighter;
+  color: #aeaeae;
+}
+
+.chat-content-div {
+  width: max-content;
+  height: 120px;
 }
 
 .right_div {
-    position: relative;
+  position: relative;
 }
 .chat-text-box {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.chat-box {
+  height: 500px;
+  overflow: auto;
 }
 
 #chat-message-form {
-    width: 96%;
-}
-
-.date {
-    opacity: 70%;
-    font-size: small;
-    margin: auto;
-    width: 30%;
+  width: 96%;
 }
 
 #send-message-btn {
-    float: left;
-    margin-left: 0;
+  float: left;
+  margin-left: 0;
+}
+
+.left_div_message {
+  float: left;
+  width: 20%;
+  overflow: hidden;
+  padding: 50px;
+  margin-right: 10px;
+  background: #fafafa;
+}
+
+.chat-date {
+  float: right;
+}
+
+.chat_container {
+  margin: 5px;
+  border-top: 1px solid #aeaeae;
+}
+
+p.date {
+  text-align: center;
+  margin-left: 30%;
+  margin-top: -10px;
+  background: #fafafa;
+  color: #aeaeae;
+  width: 80px;
 }
