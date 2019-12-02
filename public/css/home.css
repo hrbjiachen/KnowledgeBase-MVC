@@ -74,7 +74,11 @@ button#submitPostBtn:hover {
   background-color: #0b7dda;
 }
 
-.pagingButton{
+#pageDiv {
+  width: 50%;
+}
+
+.pagingButton {
   width: 120px;
   color: #0b7dda;
   font-size: 1em;
@@ -85,11 +89,11 @@ button#submitPostBtn:hover {
   color: #2196f3;
 }
 
-#lastPageButton{
+#lastPageButton {
   float: left;
 }
 
-#nextPageButton{
+#nextPageButton {
   float: right;
 }
 

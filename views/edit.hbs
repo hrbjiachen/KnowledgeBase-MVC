@@ -1,0 +1,58 @@
+{{>header}}
+
+<div class="container">
+    <div class="left_div textcenter">
+    </div>
+    <div class="right_div">
+        <div class="chat-box-text">
+            <img class="circle" src={{userInfo.imgurl}} alt={{userInfo.fname}} {{userInfo.lname}} />
+            <h2>Edit Profile</h2>
+            <form class="first-name-form">
+                <input type="text" name="fname" placeholder="First Name" required>
+                <button class="button" type="submit"
+                    onclick="onSendEdit(event, fname)">Edit First Name</button>
+            </form>            
+            <form class="last-name-form">
+                <input type="text" name="lname" placeholder="Last Name" required>
+                <button class="button" type="submit"
+                    onclick="onSendEdit(event, lname)">Edit Last Name</button>
+            </form>            
+            <form class="country-form">
+                <input type="text" name="country" placeholder="Country" required>
+                <button class="button" type="submit"
+                    onclick="onSendEdit(event, country)">Edit Country</button>
+            </form>
+            <form class="about-form">
+                <textarea type="text" name="description" placeholder="About" required></textarea>
+                <button class="button" type="submit"
+                    onclick="onSendEdit(event, description)">Edit About</button>
+            </form>
+            <form class="birthday-form">
+                <input type="date" name="bday" placeholder="Birthday: " required>
+                <br/>
+                <button class="button" type="submit"
+                    onclick="onSendEdit(event, bday)">Edit Birthday</button>
+            </form>
+            <form class="image-form">
+                <input type="text" name="imgurl" placeholder="ImageURL" required>
+                <button class="button" type="submit"
+                    onclick="onSendEdit(event, imgurl)">Edit Image</button>
+            </form>
+            {{!-- <form class="chat-form">
+                <input type="text" id="message-subject" placeholder="First Name">
+                <input type="text" id="message-subject" placeholder="Last Name">
+                <input type="text" id="message-subject" placeholder="Country">
+                <input type="text" id="message-subject" placeholder="Country">
+                <textarea type="text" id="message-content" placeholder="About"></textarea>
+                <input type="date" id="message-subject" placeholder="Birthday">
+                <input type="text" id="message-subject" placeholder="ImageURL">
+                <button class="inline" type="submit" id="send-message-btn"
+                    onclick="onSendInitialMessage(event, {{this.user_id}})">Send</button>
+            </form> --}}
+        </div>
+
+    </div>
+</div>
+
+<script src="/js/edit.js" defer></script>
+<script src="/js/home.js" defer></script>

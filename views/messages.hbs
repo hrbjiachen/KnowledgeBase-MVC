@@ -1,7 +1,7 @@
 {{>header}}
 
 <div class="container">
-    <div class="left_div textcenter chat-tiles">
+    <div class="left_div_message chat-tiles">
         {{#each rows}}
         <div class="chat-tile" onclick="onChatTile({{this.user_id}}, '{{this.subject}}')"
             id="{{this.user_id}}-{{this.subject}}">
@@ -10,8 +10,10 @@
                 <p class="chat-name">{{this.fname}} {{this.lname}}</p>
                 <p class="chat-subject">{{this.subject}}</p>
             </div>
+            <div class="chat-date">
+                {{this.dateString}}
+            </div>
         </div>
-        <hr>
         {{/each}}
     </div>
     <div class="right_div">

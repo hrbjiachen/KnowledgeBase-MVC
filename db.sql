@@ -85,3 +85,10 @@ INSERT INTO `reply` (`reply_id`, `user_id`, `post_id`, `detail`, `date_created`,
 (8, 1, 1, 'Reply to post 1 from user 1', '2019-11-28 02:16:13', '2019-11-28 02:16:13'),
 (9, 1, 3, 'Reply to post 3 from user 1 again', '2019-11-28 02:20:10', '2019-11-28 02:20:10'),
 (10, 2, 3, 'Reply to post 3 from user 2 again', '2019-11-28 02:20:28', '2019-11-28 02:20:28');
+
+/* Add like column to user table */
+
+ALTER TABLE `user` ADD COLUMN `likes` INT DEFAULT 0;
+
+/* Add date_created to chat table*/
+ALTER TABLE `chat` ADD COLUMN `chat_start_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `subject`;
