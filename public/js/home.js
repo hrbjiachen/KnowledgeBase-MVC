@@ -99,22 +99,6 @@ const postsPaging = increment => {
 
 }
 
-// const nextPage = () => {
-//   page++;
-//   for (let index = 2; index < latestPosts.length; index++) {
-//     const post = latestPosts[index];
-//     post.style.display = "none";
-//   }
-// }
-
-// const lastPage = () => {
-//   page--;
-//   for (let index = 2; index < latestPosts.length; index++) {
-//     const post = latestPosts[index];
-//     post.style.display = "none";
-//   }
-// }
-
 const showToastMessage = msg => {
   let toastMessage = document.getElementById("snackbar");
   toastMessage.innerText = msg;
