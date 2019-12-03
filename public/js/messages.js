@@ -59,6 +59,7 @@ const renderChatbox = (messages, avatar) => {
     }
 
     subcontainer.appendChild(renderMessage(message, avatar, messageDate));
+    chatBox.scrollTop = chatBox.scrollHeight;
   });
 };
 
@@ -153,7 +154,7 @@ const onSendInitialMessage = (event, user) => {
 
   sendMessage(message, user, subject, true)
     .then(data => {
-      window.location = `${window.origin}/profile/${user}`
+      window.location = `${window.origin}/profile/${user}`;
     })
     .catch(error => {
       console.error(error);
