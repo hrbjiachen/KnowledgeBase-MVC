@@ -153,8 +153,7 @@ const onSendInitialMessage = (event, user) => {
 
   sendMessage(message, user, subject, true)
     .then(data => {
-      document.getElementById("message-subject").value = "";
-      document.getElementById("message-content").value = "";
+      window.location = `${window.origin}/profile/${user}`
     })
     .catch(error => {
       console.error(error);
